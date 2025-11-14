@@ -1,0 +1,10 @@
+{
+  "environment": "prod",
+  "alarm_email": "admin@example.com",
+  "enable_waf": true,
+  "enable_cicd": false,
+  "multi_az": true,
+  "enable_xray": true,
+  "log_retention_days": 30,
+  "backup_retention_days": 30
+}
