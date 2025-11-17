@@ -7,9 +7,10 @@ from .base_agent import BaseAgent
 class SupplierAnalyzerAgent(BaseAgent):
     """Agent for supplier performance analysis and cost optimization"""
     
-    def __init__(self, region: str = "us-east-1"):
+    def __init__(self, region: str = None):
         super().__init__("supplier_analyzer_agent", "procurement_specialist", region)
-        self.lambda_client = boto3.client('lambda', region_name=region)
+        # Region is set by BaseAgent from environment if not provided
+        self.lambda_client = boto3.client('lambda', region_name=self.region)
     
     def get_tools(self) -> List[Dict[str, Any]]:
         """Return supplier analysis tools"""
@@ -158,9 +159,32 @@ Provide data-driven insights and actionable recommendations."""
         }
     
     def execute_tool(self, tool_name: str, tool_input: Dict[str, Any]) -> Dict[str, Any]:
-        """Execute supplier analysis tool via Lambda"""
+        """Execute supplier analysis tool via Lambda
+        
+        Uses ToolExecutor for async execution with retry logic if available,
+        falls back to direct Lambda invocation otherwise.
+        """
         from config import LAMBDA_SUPPLIER_ANALYZER
         
+        # Try to use ToolExecutor if available
+        if self.tool_executor:
+            result = self.execute_tool_async(
+                tool_name=tool_name,
+                function_name=LAMBDA_SUPPLIER_ANALYZER,
+                input_data=tool_input
+            )
+            
+            if result.get("success"):
+                # Extract the actual result from Lambda response
+                lambda_result = result.get("result", {})
+                if isinstance(lambda_result, dict) and lambda_result.get("success"):
+                    return lambda_result.get("result", lambda_result)
+                return lambda_result
+            else:
+                # Return error in expected format
+                return {"error": result.get("error", "Tool execution failed")}
+        
+        # Fallback to direct Lambda invocation
         payload = {"tool_name": tool_name, "input": tool_input}
         
         try:
@@ -169,6 +193,12 @@ Provide data-driven insights and actionable recommendations."""
                 InvocationType='RequestResponse',
                 Payload=json.dumps(payload)
             )
-            return json.loads(response['Payload'].read())
+            result = json.loads(response['Payload'].read())
+            
+            # Handle new structured response format
+            if isinstance(result, dict) and result.get("success"):
+                return result.get("result", result)
+            
+            return result
         except Exception as e:
             return {"error": str(e)}

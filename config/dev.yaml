@@ -1,0 +1,178 @@
+# ============================================================================
+# Development Environment Configuration
+# ============================================================================
+# This configuration is optimized for cost savings and rapid iteration.
+# Use this for local development, testing, and experimentation.
+#
+# Key characteristics:
+# - Minimal resource allocation
+# - Short retention periods
+# - Disabled expensive features (VPC, WAF, Multi-AZ)
+# - Lower concurrency limits
+# - Faster cold starts (no VPC)
+#
+# Estimated monthly cost: $50-$100 (depending on usage)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Environment Settings
+# ----------------------------------------------------------------------------
+# Defines the target AWS environment for this deployment
+environment:
+  name: dev  # Environment name: dev, staging, or prod
+  account_id: "123456789012"  # Your AWS account ID or 'auto' for auto-detection
+  region: us-east-1  # AWS region (must support Amazon Bedrock)
+
+# ----------------------------------------------------------------------------
+# Project Metadata
+# ----------------------------------------------------------------------------
+# Used for resource naming, tagging, and cost allocation
+project:
+  name: supply-chain-agent  # Project name (alphanumeric and hyphens only)
+  prefix: sc-agent-dev  # Resource name prefix (max 20 chars, lowercase)
+                        # All resources will be named: {prefix}-{resource}-{env}
+  owner: development-team  # Team or individual owner (for tagging)
+  cost_center: engineering  # Cost center for billing allocation
+
+# ----------------------------------------------------------------------------
+# Feature Flags
+# ----------------------------------------------------------------------------
+# Enable or disable optional components to control cost and complexity
+features:
+  vpc_enabled: false  # Deploy Lambda in VPC (adds NAT Gateway cost ~$32/month)
+                      # Disabled in dev for faster cold starts and lower cost
+  waf_enabled: false  # Enable AWS WAF for API Gateway (adds ~$5/month + rules)
+                      # Not needed in dev environment
+  multi_az: false  # Deploy across multiple availability zones
+                   # Single AZ sufficient for dev (cost savings)
+  xray_tracing: false  # Enable AWS X-Ray distributed tracing
+                       # Disabled in dev to reduce noise and cost
+  backup_enabled: false  # Enable automated backups for DynamoDB and S3
+                         # Not needed in dev (data is not critical)
+
+# ----------------------------------------------------------------------------
+# Resource Configuration
+# ----------------------------------------------------------------------------
+# Defines sizing and capacity for AWS resources
+resources:
+  lambda:
+    memory_mb: 512  # Lambda memory allocation (128-10240 MB)
+                    # More memory = more CPU and higher cost
+                    # 512 MB is sufficient for dev workloads
+    timeout_seconds: 180  # Maximum execution time (1-900 seconds)
+                          # 3 minutes should handle most queries
+    reserved_concurrency: 5  # Reserved concurrent executions
+                             # Low limit for dev to prevent runaway costs
+    provisioned_concurrency: 0  # Disabled in dev to save costs
+                                # Cold starts are acceptable in development
+    architecture: arm64  # CPU architecture: arm64 or x86_64
+                         # ARM64 provides 20% cost savings and better performance
+  
+  dynamodb:
+    billing_mode: PAY_PER_REQUEST  # Billing mode: PAY_PER_REQUEST or PROVISIONED
+                                   # On-demand is best for variable dev workloads
+    point_in_time_recovery: false  # Enable continuous backups (adds cost)
+                                   # Not needed in dev environment
+    conversation_table: sc-agent-dev-conversations  # Table name for conversation history
+  
+  logs:
+    retention_days: 3  # CloudWatch Logs retention (1-3653 days)
+                       # Short retention in dev to minimize storage costs
+  
+  backup:
+    retention_days: 1  # Backup retention period (1-35 days)
+                       # Minimal retention in dev
+
+# ----------------------------------------------------------------------------
+# Networking Configuration
+# ----------------------------------------------------------------------------
+# Only used if vpc_enabled: true
+networking:
+  vpc_cidr: 10.0.0.0/16  # VPC CIDR block (must not overlap with other VPCs)
+  nat_gateways: 1  # Number of NAT Gateways (1-3)
+                   # 1 is sufficient for dev (single AZ)
+
+# ----------------------------------------------------------------------------
+# API Gateway Configuration
+# ----------------------------------------------------------------------------
+# Controls API throttling and CORS settings
+api:
+  throttle_rate_limit: 10  # Steady-state requests per second
+                           # Low limit for dev to prevent abuse
+  throttle_burst_limit: 20  # Maximum burst requests
+                            # Allows brief spikes above rate limit
+  cors_origins:  # Allowed CORS origins for browser-based clients
+    - http://localhost:8501  # Streamlit default port
+    - http://localhost:3000  # React default port
+
+# ----------------------------------------------------------------------------
+# Monitoring Configuration
+# ----------------------------------------------------------------------------
+# CloudWatch monitoring and alerting settings
+monitoring:
+  alarm_email: dev-team@example.com  # Email for CloudWatch alarm notifications
+  dashboard_enabled: true  # Create CloudWatch dashboard with key metrics
+
+# ----------------------------------------------------------------------------
+# AI Agent Configuration
+# ----------------------------------------------------------------------------
+# Global settings for all AI agents
+agents:
+  default_model: anthropic.claude-3-5-sonnet-20241022-v2:0  # Default Bedrock model ID
+                                                             # Claude 3.5 Sonnet balances cost and capability
+  context_window_size: 5  # Number of conversation messages to retain in context
+                          # Smaller window in dev to reduce token usage
+  conversation_retention_days: 7  # Days to keep conversation history in DynamoDB
+                                  # Short retention in dev (data not critical)
+  max_tokens_per_context: 3000  # Maximum tokens before triggering summarization
+                                # Lower limit in dev to control costs
+  
+  # Per-agent configuration (overrides defaults above)
+  sql_agent:
+    enabled: true  # Enable/disable this agent
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0  # Model for SQL query generation
+    timeout_seconds: 60  # Maximum execution time for this agent
+  
+  inventory_optimizer:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0  # Model for inventory optimization
+    tools:  # Lambda functions this agent can invoke
+      - calculate_reorder_points  # Calculate when to reorder inventory
+      - forecast_demand  # Predict future demand
+      - identify_stockout_risks  # Find items at risk of stockout
+      - optimize_stock_levels  # Optimize inventory levels
+  
+  logistics_agent:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0  # Model for logistics optimization
+  
+  supplier_analyzer:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0  # Model for supplier analysis
+
+# ----------------------------------------------------------------------------
+# Data Source Configuration
+# ----------------------------------------------------------------------------
+# Athena and Glue Catalog settings for querying data
+data:
+  athena_database: supply_chain_db_dev  # Athena database name
+  glue_catalog: AwsDataCatalog  # Glue Data Catalog name (usually AwsDataCatalog)
+
+# ----------------------------------------------------------------------------
+# Resource Tagging
+# ----------------------------------------------------------------------------
+# Tags applied to all AWS resources for governance and cost allocation
+tags:
+  required:  # Tags that must be present on all resources
+    - Project
+    - Environment
+    - ManagedBy
+    - Owner
+    - CostCenter
+  validation:
+    enforce_required: true  # Fail deployment if required tags missing
+    max_tags: 50  # Maximum number of tags per resource (AWS limit)
+  custom:  # Additional custom tags
+    Department: Engineering  # Organizational department
+    Application: SupplyChainAgent  # Application name
+    Compliance: Internal  # Compliance classification

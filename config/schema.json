@@ -1,0 +1,296 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Supply Chain Agent Configuration",
+  "description": "Configuration schema for Supply Chain Agentic AI Application",
+  "type": "object",
+  "required": ["environment", "project", "resources"],
+  "properties": {
+    "environment": {
+      "type": "object",
+      "required": ["name", "region"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": ["dev", "staging", "prod"],
+          "description": "Environment name"
+        },
+        "account_id": {
+          "type": "string",
+          "pattern": "^(auto|[0-9]{12})$",
+          "description": "AWS account ID or 'auto' for auto-detection"
+        },
+        "region": {
+          "type": "string",
+          "pattern": "^[a-z]{2}-[a-z]+-[0-9]{1}$",
+          "description": "AWS region"
+        }
+      }
+    },
+    "project": {
+      "type": "object",
+      "required": ["name", "prefix"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Project name"
+        },
+        "prefix": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "minLength": 1,
+          "maxLength": 20,
+          "description": "Resource name prefix (lowercase, alphanumeric, hyphens)"
+        },
+        "owner": {
+          "type": "string",
+          "description": "Project owner"
+        },
+        "cost_center": {
+          "type": "string",
+          "description": "Cost center for billing"
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "vpc_enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable VPC deployment for Lambda functions"
+        },
+        "waf_enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable WAF for API Gateway"
+        },
+        "multi_az": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable multi-AZ deployment"
+        },
+        "xray_tracing": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable AWS X-Ray tracing"
+        },
+        "backup_enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automated backups"
+        }
+      }
+    },
+    "resources": {
+      "type": "object",
+      "required": ["lambda", "dynamodb", "logs"],
+      "properties": {
+        "lambda": {
+          "type": "object",
+          "properties": {
+            "memory_mb": {
+              "type": "integer",
+              "minimum": 128,
+              "maximum": 10240,
+              "default": 512,
+              "description": "Lambda memory in MB"
+            },
+            "timeout_seconds": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 900,
+              "default": 180,
+              "description": "Lambda timeout in seconds"
+            },
+            "reserved_concurrency": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000,
+              "default": 10,
+              "description": "Reserved concurrency for Lambda functions"
+            },
+            "architecture": {
+              "type": "string",
+              "enum": ["arm64", "x86_64"],
+              "default": "arm64",
+              "description": "Lambda architecture"
+            }
+          }
+        },
+        "dynamodb": {
+          "type": "object",
+          "properties": {
+            "billing_mode": {
+              "type": "string",
+              "enum": ["PAY_PER_REQUEST", "PROVISIONED"],
+              "default": "PAY_PER_REQUEST",
+              "description": "DynamoDB billing mode"
+            },
+            "point_in_time_recovery": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enable point-in-time recovery"
+            }
+          }
+        },
+        "logs": {
+          "type": "object",
+          "properties": {
+            "retention_days": {
+              "type": "integer",
+              "enum": [1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653],
+              "default": 7,
+              "description": "CloudWatch Logs retention in days"
+            }
+          }
+        },
+        "backup": {
+          "type": "object",
+          "properties": {
+            "retention_days": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 365,
+              "default": 7,
+              "description": "Backup retention in days"
+            }
+          }
+        }
+      }
+    },
+    "networking": {
+      "type": "object",
+      "properties": {
+        "vpc_cidr": {
+          "type": "string",
+          "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}/[0-9]{1,2}$",
+          "default": "10.0.0.0/16",
+          "description": "VPC CIDR block"
+        },
+        "nat_gateways": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3,
+          "default": 1,
+          "description": "Number of NAT gateways"
+        }
+      }
+    },
+    "api": {
+      "type": "object",
+      "properties": {
+        "throttle_rate_limit": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 50,
+          "description": "API Gateway throttle rate limit (requests per second)"
+        },
+        "throttle_burst_limit": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 100,
+          "description": "API Gateway throttle burst limit"
+        },
+        "cors_origins": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["http://localhost:8501"],
+          "description": "Allowed CORS origins"
+        }
+      }
+    },
+    "monitoring": {
+      "type": "object",
+      "properties": {
+        "alarm_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email for CloudWatch alarms"
+        },
+        "dashboard_enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable CloudWatch dashboard"
+        }
+      }
+    },
+    "agents": {
+      "type": "object",
+      "properties": {
+        "default_model": {
+          "type": "string",
+          "default": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+          "description": "Default Bedrock model ID"
+        },
+        "context_window_size": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 10,
+          "description": "Conversation context window size"
+        },
+        "conversation_retention_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 365,
+          "default": 30,
+          "description": "Conversation history retention in days"
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "athena_database": {
+          "type": "string",
+          "description": "Athena database name"
+        },
+        "glue_catalog": {
+          "type": "string",
+          "default": "AwsDataCatalog",
+          "description": "Glue catalog name"
+        }
+      }
+    },
+    "tags": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom tags to apply to resources"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["Project", "Environment", "ManagedBy", "Owner", "CostCenter"],
+          "description": "List of required tag keys that must be present on all resources"
+        },
+        "validation": {
+          "type": "object",
+          "properties": {
+            "enforce_required": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enforce required tags during deployment"
+            },
+            "max_tags": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 50,
+              "description": "Maximum number of tags allowed per resource"
+            }
+          }
+        }
+      }
+    }
+  }
+}

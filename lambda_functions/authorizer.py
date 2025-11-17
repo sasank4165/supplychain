@@ -61,6 +61,9 @@ def verify_token(token: str) -> Dict[str, Any]:
     user_pool_id = os.environ.get('USER_POOL_ID')
     region = os.environ.get('AWS_REGION', 'us-east-1')
     
+    if not user_pool_id:
+        raise ValueError("USER_POOL_ID environment variable not set")
+    
     # Get Cognito public keys
     keys = get_cognito_public_keys(user_pool_id, region)
     

@@ -24,17 +24,60 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Initialize orchestrator
+# Load environment variables from .env file for local development
+from env_loader import load_env_auto
+from config_manager import ConfigurationManager
+from startup_validator import run_startup_validation, StartupValidationError
+
+# Load .env file if present
+load_env_auto()
+
+# Validate startup configuration
+try:
+    run_startup_validation(
+        check_aws=True,
+        check_config=False,  # Config file is optional for Streamlit app
+        check_resources=False,  # Don't check resources at startup (may not have permissions)
+        verbose=False  # Don't print to console in Streamlit
+    )
+except StartupValidationError as e:
+    st.error("Application Configuration Error")
+    st.error(str(e))
+    st.info("Please check your .env file or environment variables")
+    st.stop()
+except Exception as e:
+    st.warning(f"Startup validation warning: {e}")
+    # Continue anyway - validation is best-effort
+
+# Initialize configuration manager
+@st.cache_resource
+def get_config_manager():
+    """Initialize configuration manager with environment-specific settings"""
+    try:
+        environment = os.getenv("ENVIRONMENT", "dev")
+        return ConfigurationManager(environment=environment)
+    except Exception as e:
+        st.warning(f"Failed to load configuration: {e}. Using environment variables only.")
+        return None
+
+# Initialize orchestrator with configuration
 @st.cache_resource
 def get_orchestrator():
-    return SupplyChainOrchestrator()
+    config = get_config_manager()
+    region = os.getenv("AWS_REGION", "us-east-1")
+    return SupplyChainOrchestrator(region=region, config=config)
 
 # Initialize auth manager
 @st.cache_resource
 def get_auth_manager():
-    user_pool_id = os.getenv("USER_POOL_ID", "us-east-1_xxxxx")
-    client_id = os.getenv("USER_POOL_CLIENT_ID", "xxxxx")
+    user_pool_id = os.getenv("USER_POOL_ID")
+    client_id = os.getenv("USER_POOL_CLIENT_ID")
     region = os.getenv("AWS_REGION", "us-east-1")
+    
+    if not user_pool_id or not client_id:
+        st.error("Cognito configuration missing. Please set USER_POOL_ID and USER_POOL_CLIENT_ID")
+        st.stop()
+    
     return AuthManager(user_pool_id, client_id, region)
 
 orchestrator = get_orchestrator()

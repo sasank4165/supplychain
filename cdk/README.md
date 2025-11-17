@@ -137,70 +137,107 @@ cdk bootstrap \
 
 ```bash
 # Set environment
-export ENVIRONMENT=prod
-export ALARM_EMAIL=ops@example.com
+export ENVIRONMENT=dev  # or staging, prod
 
 # Deploy all stacks
-cdk deploy --all --require-approval never
+cdk deploy --all --context environment=$ENVIRONMENT
 
 # Or deploy specific stacks
-cdk deploy SupplyChainNetwork-prod
-cdk deploy SupplyChainSecurity-prod
-cdk deploy SupplyChainData-prod
-cdk deploy SupplyChainApp-prod
-cdk deploy SupplyChainMonitoring-prod
-cdk deploy SupplyChainBackup-prod
-```
-
-### Deploy with Context
-
-```bash
-# Using context file
-cdk deploy --all --context environment=prod
-
-# Using command line
-cdk deploy --all \
-  --context environment=prod \
-  --context alarm_email=ops@example.com \
-  --context enable_waf=true
+cdk deploy SupplyChainSecurity-$ENVIRONMENT --context environment=$ENVIRONMENT
+cdk deploy SupplyChainData-$ENVIRONMENT --context environment=$ENVIRONMENT
+cdk deploy SupplyChainApp-$ENVIRONMENT --context environment=$ENVIRONMENT
 ```
 
 ### Environment-Specific Deployment
 
 ```bash
-# Development
+# Development (no VPC, minimal resources)
+export ENVIRONMENT=dev
 cdk deploy --all --context environment=dev
 
-# Staging
+# Staging (VPC, production-like features)
+export ENVIRONMENT=staging
 cdk deploy --all --context environment=staging
 
-# Production
+# Production (full features, high availability)
+export ENVIRONMENT=prod
 cdk deploy --all --context environment=prod
 ```
 
+### Conditional Stack Deployment
+
+Stacks are conditionally deployed based on feature flags:
+
+- **NetworkStack**: Only deployed if `vpc_enabled: true`
+- **MonitoringStack**: Only deployed if `dashboard_enabled: true`
+- **BackupStack**: Only deployed if `backup_enabled: true`
+
 ## Configuration
 
-### cdk.context.json
+### YAML Configuration Files
 
-```json
-{
-  "environment": "prod",
-  "alarm_email": "ops@example.com",
-  "enable_waf": true,
-  "enable_cicd": false,
-  "multi_az": true,
-  "enable_xray": true
-}
+The infrastructure is now fully parameterized using YAML configuration files located in `../config/`:
+
+- `config/dev.yaml` - Development environment (minimal resources, cost-optimized)
+- `config/staging.yaml` - Staging environment (production-like features)
+- `config/prod.yaml` - Production environment (full features, high availability)
+
+### Key Configuration Options
+
+**Feature Flags:**
+- `vpc_enabled`: Deploy Lambda functions in VPC
+- `waf_enabled`: Enable WAF for API Gateway
+- `multi_az`: Multi-AZ deployment
+- `xray_tracing`: Enable AWS X-Ray tracing
+- `backup_enabled`: Enable automated backups
+
+**Resource Sizing:**
+- `lambda.memory_mb`: Lambda memory size (512-10240)
+- `lambda.timeout_seconds`: Lambda timeout (1-900)
+- `lambda.reserved_concurrency`: Reserved concurrency
+- `lambda.architecture`: Lambda architecture (arm64 or x86_64)
+
+**Retention Policies:**
+- `logs.retention_days`: CloudWatch Logs retention
+- `backup.retention_days`: Backup retention
+
+### Example Configuration
+
+```yaml
+environment:
+  name: prod
+  account_id: "123456789012"  # or "auto" for auto-detection
+  region: us-east-1
+
+project:
+  name: supply-chain-agent
+  prefix: sc-agent-prod
+  owner: platform-team
+  cost_center: supply-chain
+
+features:
+  vpc_enabled: true
+  waf_enabled: true
+  multi_az: true
+  xray_tracing: true
+  backup_enabled: true
+
+resources:
+  lambda:
+    memory_mb: 1024
+    timeout_seconds: 300
+    reserved_concurrency: 100
+    architecture: arm64
 ```
 
-### config.py
+### Environment Variable Overrides
 
-Edit `config.py` to customize:
-- AWS account IDs
-- Region preferences
-- Resource sizing
-- Retention periods
-- Feature flags
+You can override any configuration value using environment variables:
+
+```bash
+export SC_AGENT_RESOURCES_LAMBDA_MEMORY_MB=2048
+export SC_AGENT_FEATURES_XRAY_TRACING=true
+```
 
 ## Stack Dependencies
 

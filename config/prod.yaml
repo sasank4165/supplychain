@@ -1,0 +1,213 @@
+# ============================================================================
+# Production Environment Configuration
+# ============================================================================
+# This configuration is optimized for reliability, security, and performance.
+# Use this for production workloads serving real users.
+#
+# Key characteristics:
+# - High availability (Multi-AZ, redundant NAT Gateways)
+# - Enhanced security (VPC, WAF, encryption)
+# - Maximum resource allocation
+# - Extended retention periods
+# - Full monitoring, tracing, and alerting
+# - Automated backups and disaster recovery
+#
+# Estimated monthly cost: $500-$1000+ (depending on usage and traffic)
+#
+# IMPORTANT: Review all settings carefully before deploying to production!
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Environment Settings
+# ----------------------------------------------------------------------------
+environment:
+  name: prod  # Production environment
+  account_id: "123456789012"  # REQUIRED: Replace with your production AWS account ID
+  region: us-east-1  # Production region (ensure Bedrock is available)
+
+# ----------------------------------------------------------------------------
+# Project Metadata
+# ----------------------------------------------------------------------------
+project:
+  name: supply-chain-agent
+  prefix: sc-agent-prod  # Production resource prefix
+  owner: platform-team  # Production support team
+  cost_center: supply-chain  # Production cost center
+
+# ----------------------------------------------------------------------------
+# Feature Flags
+# ----------------------------------------------------------------------------
+# All production features enabled for maximum reliability and security
+features:
+  vpc_enabled: true  # REQUIRED for production: Network isolation and security
+                     # Lambda functions run in private subnets
+                     # Adds ~$96/month for 3 NAT Gateways
+  waf_enabled: true  # REQUIRED for production: API protection against attacks
+                     # Protects against SQL injection, XSS, DDoS
+                     # Adds ~$5/month + per-request charges
+  multi_az: true  # REQUIRED for production: High availability across 3 AZs
+                  # Ensures service continuity during AZ failures
+                  # Increases resource costs by ~30%
+  xray_tracing: true  # REQUIRED for production: Distributed tracing
+                      # Essential for debugging and performance optimization
+                      # Minimal cost impact
+  backup_enabled: true  # REQUIRED for production: Automated backups
+                        # Point-in-time recovery for DynamoDB
+                        # S3 versioning for data protection
+
+# ----------------------------------------------------------------------------
+# Resource Configuration
+# ----------------------------------------------------------------------------
+# Production-grade resource allocation for performance and reliability
+resources:
+  lambda:
+    memory_mb: 1024  # Production memory allocation
+                     # Increase to 2048 MB if handling large datasets
+                     # More memory = more CPU = faster execution
+    timeout_seconds: 300  # 5-minute timeout for complex queries
+                          # Increase if queries consistently timeout
+    reserved_concurrency: 100  # Reserved concurrent executions
+                               # Prevents throttling during peak traffic
+                               # Adjust based on expected load (monitor ConcurrentExecutions metric)
+    provisioned_concurrency: 10  # Keep 10 instances warm to reduce cold starts
+                                 # Recommended for production to ensure fast response times
+                                 # Cost: ~$0.015/hour per instance = ~$11/month per function
+                                 # Set to 0 to disable (not recommended for production)
+    architecture: arm64  # ARM64 for 20% cost savings vs x86_64
+                         # Provides better price-performance ratio
+  
+  dynamodb:
+    billing_mode: PAY_PER_REQUEST  # On-demand billing recommended for production
+                                   # Automatically scales with traffic
+                                   # No capacity planning required
+                                   # Consider PROVISIONED if traffic is predictable
+    # read_capacity_units: 100  # Only used if billing_mode is PROVISIONED
+    # write_capacity_units: 50  # Only used if billing_mode is PROVISIONED
+                                # Set based on expected read/write patterns
+                                # 1 RCU = 2 eventually consistent reads/sec (4KB)
+                                # 1 WCU = 1 write/sec (1KB)
+    point_in_time_recovery: true  # REQUIRED: Continuous backups for 35 days
+                                  # Enables restore to any point in time
+                                  # Essential for disaster recovery
+    conversation_table: sc-agent-prod-conversations
+  
+  logs:
+    retention_days: 30  # 30-day retention for compliance and debugging
+                        # Increase to 90 or 365 days if required by compliance
+                        # Longer retention increases storage costs
+  
+  backup:
+    retention_days: 30  # 30-day backup retention
+                        # Meets most compliance requirements
+                        # Increase if longer retention needed
+
+# ----------------------------------------------------------------------------
+# Networking Configuration
+# ----------------------------------------------------------------------------
+networking:
+  vpc_cidr: 10.2.0.0/16  # Production VPC CIDR (different from dev and staging)
+                         # Allows VPC peering if needed
+                         # Provides 65,536 IP addresses
+  nat_gateways: 3  # One NAT Gateway per AZ for high availability
+                   # Ensures no single point of failure
+                   # Cost: ~$32/month per NAT Gateway = $96/month total
+                   # Reduce to 1 if cost is a concern (reduces availability)
+
+# ----------------------------------------------------------------------------
+# API Gateway Configuration
+# ----------------------------------------------------------------------------
+api:
+  throttle_rate_limit: 100  # Steady-state requests per second
+                            # Adjust based on expected traffic
+                            # Monitor 4XXError and 5XXError metrics
+  throttle_burst_limit: 200  # Maximum burst requests
+                             # Allows brief traffic spikes
+                             # Should be 2x rate limit
+  cors_origins:  # IMPORTANT: Restrict to your production domains only
+    - https://app.example.com  # Production frontend URL
+    - https://www.example.com  # Production website
+    # DO NOT include localhost or wildcard (*) in production!
+
+# ----------------------------------------------------------------------------
+# Monitoring Configuration
+# ----------------------------------------------------------------------------
+monitoring:
+  alarm_email: ops-team@example.com  # REQUIRED: Production operations team email
+                                     # Receives CloudWatch alarm notifications
+                                     # Consider using SNS topic for multiple recipients
+  dashboard_enabled: true  # Creates CloudWatch dashboard with key metrics
+                           # Essential for production monitoring
+
+# ----------------------------------------------------------------------------
+# AI Agent Configuration
+# ----------------------------------------------------------------------------
+# Production agent settings optimized for user experience
+agents:
+  default_model: anthropic.claude-3-5-sonnet-20241022-v2:0  # Claude 3.5 Sonnet
+                                                             # Best balance of capability and cost
+                                                             # Consider Claude 3 Haiku for cost savings
+                                                             # Consider Claude 3 Opus for maximum capability
+  context_window_size: 10  # Number of conversation turns to retain
+                           # Larger window = better context but higher token cost
+                           # Monitor TokenUsage metric to optimize
+  conversation_retention_days: 90  # 90-day retention for production
+                                   # Allows long-term conversation analysis
+                                   # Adjust based on compliance requirements
+  max_tokens_per_context: 5000  # Maximum tokens before summarization
+                                # Higher limit for complex conversations
+                                # Prevents context truncation
+  
+  sql_agent:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+    timeout_seconds: 60
+  
+  inventory_optimizer:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+    tools:
+      - calculate_reorder_points
+      - forecast_demand
+      - identify_stockout_risks
+      - optimize_stock_levels
+  
+  logistics_agent:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+  
+  supplier_analyzer:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+
+# ----------------------------------------------------------------------------
+# Data Source Configuration
+# ----------------------------------------------------------------------------
+data:
+  athena_database: supply_chain_db_prod  # Production Athena database
+  glue_catalog: AwsDataCatalog  # Glue Data Catalog
+
+# ----------------------------------------------------------------------------
+# Resource Tagging
+# ----------------------------------------------------------------------------
+# Production tags for governance, compliance, and cost allocation
+tags:
+  required:  # REQUIRED tags for all production resources
+    - Project  # Project name
+    - Environment  # Environment (prod)
+    - ManagedBy  # Management tool (CDK)
+    - Owner  # Team responsible
+    - CostCenter  # Cost allocation
+    - Compliance  # Compliance framework (SOC2, HIPAA, etc.)
+    - DataClassification  # Data sensitivity level
+  validation:
+    enforce_required: true  # REQUIRED: Fail deployment if tags missing
+    max_tags: 50  # AWS limit
+  custom:  # Production-specific tags
+    Department: Operations  # Organizational department
+    Application: SupplyChainAgent  # Application name
+    Compliance: SOC2  # IMPORTANT: Update based on your compliance requirements
+    DataClassification: Confidential  # IMPORTANT: Classify based on data sensitivity
+                                      # Options: Public, Internal, Confidential, Restricted
+    BackupPolicy: Daily  # Backup frequency
+    SecurityZone: Restricted  # Security classification
+                              # Determines network access and controls

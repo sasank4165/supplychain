@@ -8,9 +8,10 @@ from .base_agent import BaseAgent
 class SQLAgent(BaseAgent):
     """Agent that converts natural language to SQL and executes queries on Athena"""
     
-    def __init__(self, persona: str, region: str = "us-east-1"):
+    def __init__(self, persona: str, region: str = None):
         super().__init__(f"sql_agent_{persona}", persona, region)
-        self.athena_client = boto3.client('athena', region_name=region)
+        # Region is set by BaseAgent from environment if not provided
+        self.athena_client = boto3.client('athena', region_name=self.region)
         
     def get_tools(self) -> List[Dict[str, Any]]:
         """Return SQL execution tool"""
@@ -89,8 +90,17 @@ Return response in JSON format:
             # Fallback: extract SQL from response
             return {"sql": response, "explanation": "Generated SQL query"}
     
-    def execute_athena_query(self, sql_query: str, context: Optional[Dict] = None) -> Dict[str, Any]:
-        """Execute SQL query on Athena with table access validation"""
+    def execute_athena_query(self, sql_query: str, context: Optional[Dict] = None, access_controller=None) -> Dict[str, Any]:
+        """Execute SQL query on Athena with table access validation and row-level security
+        
+        Args:
+            sql_query: SQL query to execute
+            context: User context for access control
+            access_controller: Optional AccessController instance for enhanced access control
+            
+        Returns:
+            Query results or error
+        """
         from config import ATHENA_OUTPUT_LOCATION, ATHENA_DATABASE, PERSONA_TABLE_ACCESS, Persona
         
         # Validate table access if context provided
@@ -98,21 +108,34 @@ Return response in JSON format:
             # Extract table names from SQL query
             tables_in_query = self._extract_tables_from_sql(sql_query)
             
-            # Get allowed tables for user's persona
-            persona = context.get('persona')
-            try:
-                persona_enum = Persona(persona)
-                allowed_tables = PERSONA_TABLE_ACCESS.get(persona_enum, [])
-                
-                # Check if all tables in query are allowed
+            # Use AccessController if available
+            if access_controller:
+                # Validate access to all tables in query
                 for table in tables_in_query:
-                    if table not in allowed_tables:
+                    if not access_controller.authorize_table_access(context, table, "read"):
                         return {
-                            "error": f"Access denied to table: {table}. Your role ({persona}) doesn't have permission to access this table.",
+                            "error": f"Access denied to table: {table}. Your role doesn't have permission to access this table.",
                             "status": 403
                         }
-            except:
-                return {"error": "Invalid persona", "status": 403}
+                
+                # Apply row-level security
+                sql_query = access_controller.inject_row_level_security(context, sql_query)
+            else:
+                # Fallback to legacy table access validation
+                persona = context.get('persona')
+                try:
+                    persona_enum = Persona(persona)
+                    allowed_tables = PERSONA_TABLE_ACCESS.get(persona_enum, [])
+                    
+                    # Check if all tables in query are allowed
+                    for table in tables_in_query:
+                        if table not in allowed_tables:
+                            return {
+                                "error": f"Access denied to table: {table}. Your role ({persona}) doesn't have permission to access this table.",
+                                "status": 403
+                            }
+                except:
+                    return {"error": "Invalid persona", "status": 403}
         
         try:
             # Start query execution
@@ -171,8 +194,18 @@ Return response in JSON format:
         except Exception as e:
             return {"error": str(e)}
     
-    def process_query(self, query: str, session_id: str, context: Optional[Dict] = None) -> Dict[str, Any]:
-        """Process natural language query with access control"""
+    def process_query(self, query: str, session_id: str, context: Optional[Dict] = None, access_controller=None) -> Dict[str, Any]:
+        """Process natural language query with access control
+        
+        Args:
+            query: Natural language query
+            session_id: Session identifier
+            context: User context for access control
+            access_controller: Optional AccessController instance
+            
+        Returns:
+            Query results
+        """
         
         # Convert to SQL
         sql_result = self.natural_language_to_sql(query)
@@ -180,7 +213,7 @@ Return response in JSON format:
         explanation = sql_result.get("explanation", "")
         
         # Execute query with access control
-        query_results = self.execute_athena_query(sql_query, context)
+        query_results = self.execute_athena_query(sql_query, context, access_controller)
         
         # Format response
         if "error" in query_results:

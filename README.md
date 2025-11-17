@@ -14,15 +14,16 @@ pip install -r requirements.txt
 # Configure AWS
 aws configure
 
-# Deploy infrastructure
-chmod +x deploy.sh
-./deploy.sh
+# Deploy infrastructure (automated)
+bash deploy.sh --environment dev
 
 # Run application
 streamlit run app.py
 ```
 
 Access at: http://localhost:8501
+
+**New!** Automated deployment with validation, configuration management, and verification. See [Deployment Automation Guide](docs/DEPLOYMENT_AUTOMATION_GUIDE.md) for details.
 
 ## 📋 Overview
 
@@ -114,6 +115,8 @@ supply_chain_agent/
 - **DEPLOYMENT.md**: Detailed deployment guide
 - **ARCHITECTURE.md**: Technical architecture
 - **PROJECT_SUMMARY.md**: Complete project overview
+- **docs/TAG_MANAGEMENT.md**: Tag management and validation guide
+- **cdk/CONFIGURATION_GUIDE.md**: Configuration reference
 
 ## 🔧 Configuration
 
@@ -169,17 +172,57 @@ Monthly cost for 1000 queries/day: **$240-500**
 - Python 3.11+
 - Node.js 18+ (for CDK)
 
-### Deploy
+### Automated Deployment (Recommended)
+
 ```bash
-./deploy.sh
+# Deploy to development environment
+bash deploy.sh --environment dev
+
+# Deploy to production with validation
+bash scripts/validate-deployment.sh --environment prod
+bash deploy.sh --environment prod
 ```
 
-### Manual Deploy
+The automated deployment includes:
+- ✅ Pre-deployment validation
+- ✅ Configuration loading from YAML
+- ✅ CDK bootstrap check
+- ✅ Infrastructure deployment
+- ✅ Post-deployment configuration
+- ✅ Deployment verification
+
+### Manual Deployment
+
 ```bash
-cd cdk
-cdk bootstrap
-cdk deploy
+# Step-by-step deployment
+bash scripts/validate-deployment.sh --environment dev
+bash scripts/load-config.sh --environment dev
+bash scripts/bootstrap-cdk.sh --environment dev
+cd cdk && cdk deploy && cd ..
+bash scripts/post-deploy.sh --environment dev
+bash scripts/verify-deployment.sh --environment dev
 ```
+
+### Cleanup and Rollback
+
+```bash
+# Rollback to previous version
+bash scripts/rollback.sh --environment prod
+
+# Cleanup environment (preserve data)
+bash scripts/cleanup.sh --environment dev
+
+# Complete removal
+bash scripts/cleanup.sh --environment dev --force-delete
+```
+
+### Documentation
+- [Deployment Automation Guide](docs/DEPLOYMENT_AUTOMATION_GUIDE.md) - Complete automation guide
+- [Deployment Quick Reference](docs/DEPLOYMENT_QUICK_REFERENCE.md) - Common commands
+- [Cleanup and Rollback Guide](docs/CLEANUP_ROLLBACK_GUIDE.md) - Cleanup and rollback operations
+- [Cleanup Quick Reference](docs/CLEANUP_ROLLBACK_QUICK_REFERENCE.md) - Quick command reference
+- [Configuration Reference](config/README.md) - Configuration parameters
+- [DEPLOYMENT.md](DEPLOYMENT.md) - Detailed deployment guide
 
 ## 🛠️ Troubleshooting
 

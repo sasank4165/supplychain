@@ -1,0 +1,163 @@
+# ============================================================================
+# Staging Environment Configuration
+# ============================================================================
+# This configuration balances cost efficiency with production-like features.
+# Use this for pre-production testing, QA, and performance validation.
+#
+# Key characteristics:
+# - Production-like architecture (VPC, Multi-AZ, WAF)
+# - Medium resource allocation
+# - Moderate retention periods
+# - Full monitoring and tracing enabled
+# - Suitable for load testing
+#
+# Estimated monthly cost: $200-$400 (depending on usage)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Environment Settings
+# ----------------------------------------------------------------------------
+environment:
+  name: staging  # Environment name: dev, staging, or prod
+  account_id: "123456789012"  # Your AWS account ID or 'auto' for auto-detection
+  region: us-east-1  # AWS region (must support Amazon Bedrock)
+
+# ----------------------------------------------------------------------------
+# Project Metadata
+# ----------------------------------------------------------------------------
+project:
+  name: supply-chain-agent
+  prefix: sc-agent-staging  # Unique prefix for staging resources
+  owner: platform-team
+  cost_center: supply-chain
+
+# ----------------------------------------------------------------------------
+# Feature Flags
+# ----------------------------------------------------------------------------
+# Production-like features enabled for realistic testing
+features:
+  vpc_enabled: true  # Deploy Lambda in VPC to match production architecture
+                     # Enables testing of VPC-specific configurations
+  waf_enabled: true  # Enable WAF to test security rules before production
+                     # Validates WAF configuration and performance impact
+  multi_az: true  # Deploy across multiple AZs for high availability testing
+                  # Tests failover and resilience scenarios
+  xray_tracing: true  # Enable X-Ray for performance analysis and debugging
+                      # Essential for identifying bottlenecks before production
+  backup_enabled: true  # Enable backups to test recovery procedures
+                        # Validates backup and restore workflows
+
+# ----------------------------------------------------------------------------
+# Resource Configuration
+# ----------------------------------------------------------------------------
+# Medium-sized resources suitable for load testing and QA
+resources:
+  lambda:
+    memory_mb: 1024  # Double dev memory for production-like performance
+                     # Sufficient for realistic load testing
+    timeout_seconds: 300  # 5 minutes to handle complex queries
+                          # Matches production timeout
+    reserved_concurrency: 50  # Medium concurrency for load testing
+                              # Can handle moderate traffic spikes
+    provisioned_concurrency: 5  # Keep 5 instances warm for testing
+                                # Lower than production to save costs
+                                # Sufficient for QA and load testing
+    architecture: arm64  # ARM64 for cost savings (same as production)
+  
+  dynamodb:
+    billing_mode: PAY_PER_REQUEST  # On-demand billing for variable staging workload
+                                   # Automatically scales with load testing
+    point_in_time_recovery: true  # Enable PITR to test recovery procedures
+                                  # Matches production configuration
+    conversation_table: sc-agent-staging-conversations
+  
+  logs:
+    retention_days: 14  # 2-week retention for debugging and analysis
+                        # Balances cost with troubleshooting needs
+  
+  backup:
+    retention_days: 14  # 2-week backup retention
+                        # Sufficient for staging environment
+
+# ----------------------------------------------------------------------------
+# Networking Configuration
+# ----------------------------------------------------------------------------
+networking:
+  vpc_cidr: 10.1.0.0/16  # Different CIDR from dev (10.0.0.0/16) and prod (10.2.0.0/16)
+                         # Allows VPC peering if needed
+  nat_gateways: 2  # 2 NAT Gateways for multi-AZ deployment
+                   # Provides redundancy and higher throughput
+
+# ----------------------------------------------------------------------------
+# API Gateway Configuration
+# ----------------------------------------------------------------------------
+api:
+  throttle_rate_limit: 75  # Higher than dev, lower than prod
+                           # Suitable for load testing
+  throttle_burst_limit: 150  # Allows testing of burst scenarios
+  cors_origins:
+    - https://staging.example.com  # Staging frontend URL
+    - http://localhost:8501  # Allow local testing against staging
+
+# ----------------------------------------------------------------------------
+# Monitoring Configuration
+# ----------------------------------------------------------------------------
+monitoring:
+  alarm_email: staging-team@example.com  # QA team email for alerts
+  dashboard_enabled: true  # Dashboard for monitoring load tests
+
+# ----------------------------------------------------------------------------
+# AI Agent Configuration
+# ----------------------------------------------------------------------------
+# Production-like agent settings for realistic testing
+agents:
+  default_model: anthropic.claude-3-5-sonnet-20241022-v2:0  # Same model as production
+                                                             # Ensures consistent behavior
+  context_window_size: 10  # Production-like context window
+                           # Tests memory and token usage at scale
+  conversation_retention_days: 30  # 1-month retention for testing
+                                   # Allows analysis of conversation patterns
+  max_tokens_per_context: 4000  # Higher limit for complex conversations
+                                # Tests summarization logic
+  
+  sql_agent:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+    timeout_seconds: 60
+  
+  inventory_optimizer:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+    tools:
+      - calculate_reorder_points
+      - forecast_demand
+      - identify_stockout_risks
+      - optimize_stock_levels
+  
+  logistics_agent:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+  
+  supplier_analyzer:
+    enabled: true
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+
+data:
+  athena_database: supply_chain_db_staging
+  glue_catalog: AwsDataCatalog
+
+tags:
+  required:
+    - Project
+    - Environment
+    - ManagedBy
+    - Owner
+    - CostCenter
+  validation:
+    enforce_required: true
+    max_tags: 50
+  custom:
+    Department: Operations
+    Application: SupplyChainAgent
+    Purpose: PreProduction
+    Compliance: Internal

@@ -12,6 +12,14 @@ from enum import Enum
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
+# Import ToolExecutor for async tool execution
+try:
+    from tool_executor import ToolExecutor, ToolExecutionRequest, ToolExecutionStatus
+    TOOL_EXECUTOR_AVAILABLE = True
+except ImportError:
+    logger.warning("ToolExecutor not available, falling back to synchronous execution")
+    TOOL_EXECUTOR_AVAILABLE = False
+
 
 class ToolStatus(Enum):
     """Tool execution status"""
@@ -153,7 +161,8 @@ class EnhancedBaseAgent(ABC):
         agent_name: str, 
         persona: str, 
         region: str = "us-east-1",
-        max_iterations: int = 10
+        max_iterations: int = 10,
+        tool_executor: Optional[Any] = None
     ):
         self.agent_name = agent_name
         self.persona = persona
@@ -169,6 +178,14 @@ class EnhancedBaseAgent(ABC):
         
         # Conversation memory
         self.memory = ConversationMemory()
+        
+        # Tool executor for async execution
+        if tool_executor:
+            self.tool_executor = tool_executor
+        elif TOOL_EXECUTOR_AVAILABLE:
+            self.tool_executor = ToolExecutor(region=region)
+        else:
+            self.tool_executor = None
         
         # Register tools
         self._register_tools()

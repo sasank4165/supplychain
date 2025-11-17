@@ -1,11 +1,20 @@
 """Lambda function for logistics optimization tools"""
 import json
+import os
 import boto3
 from datetime import datetime
 
+# Initialize clients
 athena_client = boto3.client('athena')
-ATHENA_DATABASE = "aws-gpl-cog-sc-db"
-ATHENA_OUTPUT = "s3://your-athena-results-bucket/"
+
+# Load configuration from environment variables
+ATHENA_DATABASE = os.environ.get('ATHENA_DATABASE')
+ATHENA_OUTPUT = os.environ.get('ATHENA_OUTPUT_LOCATION')
+
+if not ATHENA_DATABASE or not ATHENA_OUTPUT:
+    raise ValueError(
+        "Required environment variables not set: ATHENA_DATABASE, ATHENA_OUTPUT_LOCATION"
+    )
 
 def execute_athena_query(query: str) -> list:
     """Execute Athena query and return results"""
@@ -222,9 +231,16 @@ def calculate_warehouse_capacity(warehouse_code: str):
     }
 
 def lambda_handler(event, context):
-    """Lambda handler"""
+    """Lambda handler with async invocation support
+    
+    Supports both synchronous (RequestResponse) and asynchronous (Event) invocations.
+    Returns structured responses compatible with ToolExecutor.
+    """
     tool_name = event.get('tool_name')
     tool_input = event.get('input', {})
+    
+    # Track execution metadata
+    start_time = datetime.now()
     
     try:
         if tool_name == 'optimize_delivery_route':
@@ -243,8 +259,26 @@ def lambda_handler(event, context):
         elif tool_name == 'calculate_warehouse_capacity':
             result = calculate_warehouse_capacity(tool_input['warehouse_code'])
         else:
-            result = {"error": f"Unknown tool: {tool_name}"}
+            return {
+                "success": False,
+                "error": f"Unknown tool: {tool_name}",
+                "tool_name": tool_name
+            }
         
-        return result
+        # Return structured response
+        execution_time = (datetime.now() - start_time).total_seconds() * 1000
+        return {
+            "success": True,
+            "result": result,
+            "tool_name": tool_name,
+            "execution_time_ms": execution_time
+        }
+        
     except Exception as e:
-        return {"error": str(e)}
+        execution_time = (datetime.now() - start_time).total_seconds() * 1000
+        return {
+            "success": False,
+            "error": str(e),
+            "tool_name": tool_name,
+            "execution_time_ms": execution_time
+        }
