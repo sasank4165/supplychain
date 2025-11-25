@@ -1,6 +1,5 @@
 """Authentication and Authorization Manager"""
 import boto3
-import jwt
 import os
 from typing import Dict, Optional, List
 from datetime import datetime, timedelta
@@ -8,6 +7,8 @@ from functools import wraps
 import hashlib
 import hmac
 import base64
+
+from auth import jwt_utils as jwt
 
 class AuthManager:
     """Manages authentication and authorization for supply chain agents"""
