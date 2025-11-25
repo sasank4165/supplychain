@@ -1,10 +1,15 @@
 """Test authentication and authorization"""
 import os
 import sys
+
+import pytest
+
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from auth.auth_manager import AuthManager
 
+
+@pytest.mark.skip(reason="Interactive flow intended for manual verification")
 def test_authentication():
     """Test authentication flow"""
     
@@ -102,6 +107,7 @@ def test_authentication():
     print("=" * 80)
 
 
+@pytest.mark.skip(reason="Interactive flow intended for manual verification")
 def test_rbac_scenarios():
     """Test specific RBAC scenarios"""
     
