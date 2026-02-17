@@ -89,10 +89,33 @@ def initialize_app():
             
             # Initialize AWS clients
             aws_config = config.get('aws', {})
-            bedrock_client = BedrockClient(aws_config.get('bedrock', {}), logger)
-            redshift_client = RedshiftClient(aws_config.get('redshift', {}), logger)
-            lambda_client = LambdaClient(aws_config.get('lambda', {}), logger)
-            glue_client = GlueClient(aws_config.get('glue', {}), logger)
+            bedrock_config = aws_config.get('bedrock', {})
+            redshift_config = aws_config.get('redshift', {})
+            glue_config = aws_config.get('glue', {})
+            
+            bedrock_client = BedrockClient(
+                region=aws_config.get('region', 'us-east-1'),
+                model_id=bedrock_config.get('model_id', 'anthropic.claude-3-5-sonnet-20241022-v2:0'),
+                max_tokens=bedrock_config.get('max_tokens', 4096),
+                temperature=bedrock_config.get('temperature', 0.0)
+            )
+            
+            redshift_client = RedshiftClient(
+                region=aws_config.get('region', 'us-east-1'),
+                workgroup_name=redshift_config.get('workgroup_name', 'supply-chain-mvp'),
+                database=redshift_config.get('database', 'supply_chain_db'),
+                timeout=redshift_config.get('data_api_timeout', 30)
+            )
+            
+            lambda_client = LambdaClient(
+                region=aws_config.get('region', 'us-east-1')
+            )
+            
+            glue_client = GlueClient(
+                region=aws_config.get('region', 'us-east-1'),
+                catalog_id=glue_config.get('catalog_id'),
+                database=glue_config.get('database', 'supply_chain_catalog')
+            )
             
             # Initialize cache
             cache_config = config.get('cache', {})
