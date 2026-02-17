@@ -1,0 +1,531 @@
+sales_order_prefix,sales_order_number,order_date,customer_code,customer_name,warehouse_code,delivery_address,delivery_area,delivery_date,status
+SO,000001,2025-11-19,CUST005,SafeWork Corp,WH003,"2363 Main St, City",Central,2025-11-25,Delivered
+SO,000002,2025-11-19,CUST007,Industrial Systems Inc,WH001,"8837 Main St, City",West,2025-11-22,Delivered
+SO,000003,2025-11-19,CUST006,Office Pro Services,WH003,"5654 Main St, City",East,2025-11-25,Delivered
+SO,000004,2025-11-19,CUST008,Green Energy Co,WH002,"6203 Main St, City",West,2025-11-25,Delivered
+SO,000005,2025-11-19,CUST002,XYZ Industries,WH002,"8347 Main St, City",Downtown,2025-11-30,Delivered
+SO,000006,2025-11-19,CUST008,Green Energy Co,WH003,"3188 Main St, City",East,2025-11-22,Delivered
+SO,000007,2025-11-19,CUST001,ABC Manufacturing,WH001,"6322 Main St, City",Downtown,2025-11-22,Delivered
+SO,000008,2025-11-19,CUST008,Green Energy Co,WH002,"1592 Main St, City",West,2025-11-30,Cancelled
+SO,000009,2025-11-20,CUST006,Office Pro Services,WH002,"3190 Main St, City",Central,2025-11-24,Delivered
+SO,000010,2025-11-20,CUST010,Quality Assurance Ltd,WH003,"5466 Main St, City",North,2025-11-22,Cancelled
+SO,000011,2025-11-20,CUST003,Tech Solutions Ltd,WH002,"1715 Main St, City",South,2025-11-24,Delivered
+SO,000012,2025-11-20,CUST009,Metro Logistics,WH003,"8110 Main St, City",Central,2025-11-25,Delivered
+SO,000013,2025-11-20,CUST006,Office Pro Services,WH003,"5513 Main St, City",North,2025-11-23,Delivered
+SO,000014,2025-11-20,CUST008,Green Energy Co,WH001,"5880 Main St, City",Downtown,2025-11-29,Delivered
+SO,000015,2025-11-20,CUST003,Tech Solutions Ltd,WH002,"4234 Main St, City",North,2025-12-03,Cancelled
+SO,000016,2025-11-20,CUST009,Metro Logistics,WH002,"7547 Main St, City",South,2025-11-23,Cancelled
+SO,000017,2025-11-21,CUST004,BuildRight Construction,WH003,"7600 Main St, City",West,2025-12-03,Delivered
+SO,000018,2025-11-21,CUST009,Metro Logistics,WH002,"2729 Main St, City",Downtown,2025-11-29,Cancelled
+SO,000019,2025-11-21,CUST005,SafeWork Corp,WH003,"959 Main St, City",Central,2025-11-28,Delivered
+SO,000020,2025-11-21,CUST003,Tech Solutions Ltd,WH002,"6026 Main St, City",East,2025-12-03,Delivered
+SO,000021,2025-11-21,CUST007,Industrial Systems Inc,WH002,"2150 Main St, City",Downtown,2025-11-24,Delivered
+SO,000022,2025-11-21,CUST001,ABC Manufacturing,WH003,"6465 Main St, City",South,2025-11-24,Cancelled
+SO,000023,2025-11-21,CUST007,Industrial Systems Inc,WH001,"8389 Main St, City",Central,2025-12-01,Delivered
+SO,000024,2025-11-21,CUST009,Metro Logistics,WH003,"3163 Main St, City",East,2025-12-03,Cancelled
+SO,000025,2025-11-22,CUST005,SafeWork Corp,WH003,"2357 Main St, City",Suburbs,2025-11-24,Delivered
+SO,000026,2025-11-22,CUST009,Metro Logistics,WH003,"9008 Main St, City",Downtown,2025-11-27,Cancelled
+SO,000027,2025-11-22,CUST001,ABC Manufacturing,WH003,"7344 Main St, City",Central,2025-12-05,Cancelled
+SO,000028,2025-11-22,CUST003,Tech Solutions Ltd,WH002,"6986 Main St, City",South,2025-12-03,Cancelled
+SO,000029,2025-11-22,CUST008,Green Energy Co,WH002,"7521 Main St, City",Suburbs,2025-12-04,Delivered
+SO,000030,2025-11-22,CUST010,Quality Assurance Ltd,WH001,"9045 Main St, City",Downtown,2025-11-28,Cancelled
+SO,000031,2025-11-22,CUST007,Industrial Systems Inc,WH003,"3324 Main St, City",Downtown,2025-11-27,Delivered
+SO,000032,2025-11-22,CUST006,Office Pro Services,WH002,"7764 Main St, City",North,2025-11-27,Delivered
+SO,000033,2025-11-23,CUST009,Metro Logistics,WH002,"8292 Main St, City",Central,2025-11-27,Cancelled
+SO,000034,2025-11-23,CUST002,XYZ Industries,WH003,"259 Main St, City",Downtown,2025-11-24,Delivered
+SO,000035,2025-11-23,CUST007,Industrial Systems Inc,WH002,"7114 Main St, City",Downtown,2025-12-01,Cancelled
+SO,000036,2025-11-23,CUST006,Office Pro Services,WH003,"195 Main St, City",Downtown,2025-11-25,Delivered
+SO,000037,2025-11-23,CUST005,SafeWork Corp,WH002,"509 Main St, City",Downtown,2025-12-06,Delivered
+SO,000038,2025-11-23,CUST002,XYZ Industries,WH001,"3027 Main St, City",East,2025-11-27,Delivered
+SO,000039,2025-11-23,CUST003,Tech Solutions Ltd,WH003,"9357 Main St, City",North,2025-12-07,Delivered
+SO,000040,2025-11-23,CUST009,Metro Logistics,WH002,"7063 Main St, City",East,2025-12-03,Cancelled
+SO,000041,2025-11-24,CUST001,ABC Manufacturing,WH002,"7434 Main St, City",Suburbs,2025-11-29,Cancelled
+SO,000042,2025-11-24,CUST002,XYZ Industries,WH002,"5651 Main St, City",Suburbs,2025-12-02,Delivered
+SO,000043,2025-11-24,CUST003,Tech Solutions Ltd,WH002,"5584 Main St, City",Suburbs,2025-12-03,Delivered
+SO,000044,2025-11-24,CUST001,ABC Manufacturing,WH003,"2900 Main St, City",North,2025-12-04,Delivered
+SO,000045,2025-11-24,CUST002,XYZ Industries,WH003,"1165 Main St, City",North,2025-12-04,Delivered
+SO,000046,2025-11-24,CUST005,SafeWork Corp,WH003,"6650 Main St, City",East,2025-11-26,Cancelled
+SO,000047,2025-11-24,CUST008,Green Energy Co,WH003,"8735 Main St, City",Downtown,2025-11-28,Delivered
+SO,000048,2025-11-25,CUST004,BuildRight Construction,WH003,"1286 Main St, City",Downtown,2025-11-26,Delivered
+SO,000049,2025-11-25,CUST003,Tech Solutions Ltd,WH003,"606 Main St, City",Downtown,2025-12-06,Delivered
+SO,000050,2025-11-25,CUST010,Quality Assurance Ltd,WH002,"5334 Main St, City",Central,2025-12-05,Delivered
+SO,000051,2025-11-25,CUST006,Office Pro Services,WH003,"8291 Main St, City",Suburbs,2025-12-08,Delivered
+SO,000052,2025-11-25,CUST004,BuildRight Construction,WH002,"117 Main St, City",Suburbs,2025-12-04,Delivered
+SO,000053,2025-11-26,CUST004,BuildRight Construction,WH001,"9295 Main St, City",East,2025-12-05,Delivered
+SO,000054,2025-11-26,CUST009,Metro Logistics,WH001,"8848 Main St, City",North,2025-12-08,Delivered
+SO,000055,2025-11-26,CUST005,SafeWork Corp,WH002,"3900 Main St, City",Downtown,2025-12-04,Delivered
+SO,000056,2025-11-26,CUST009,Metro Logistics,WH002,"8197 Main St, City",East,2025-12-05,Delivered
+SO,000057,2025-11-26,CUST007,Industrial Systems Inc,WH001,"6003 Main St, City",Downtown,2025-12-08,Delivered
+SO,000058,2025-11-27,CUST009,Metro Logistics,WH003,"4990 Main St, City",Central,2025-11-30,Cancelled
+SO,000059,2025-11-27,CUST002,XYZ Industries,WH001,"8686 Main St, City",West,2025-12-07,Cancelled
+SO,000060,2025-11-27,CUST007,Industrial Systems Inc,WH003,"1204 Main St, City",East,2025-12-10,Delivered
+SO,000061,2025-11-27,CUST002,XYZ Industries,WH001,"2474 Main St, City",Suburbs,2025-11-28,Delivered
+SO,000062,2025-11-27,CUST001,ABC Manufacturing,WH001,"5756 Main St, City",North,2025-12-04,Delivered
+SO,000063,2025-11-27,CUST003,Tech Solutions Ltd,WH003,"6121 Main St, City",South,2025-12-03,Cancelled
+SO,000064,2025-11-27,CUST001,ABC Manufacturing,WH003,"7395 Main St, City",North,2025-12-03,Cancelled
+SO,000065,2025-11-28,CUST009,Metro Logistics,WH001,"3407 Main St, City",Suburbs,2025-12-02,Delivered
+SO,000066,2025-11-28,CUST005,SafeWork Corp,WH003,"2442 Main St, City",Downtown,2025-12-01,Delivered
+SO,000067,2025-11-28,CUST003,Tech Solutions Ltd,WH003,"5079 Main St, City",Central,2025-12-03,Delivered
+SO,000068,2025-11-28,CUST005,SafeWork Corp,WH001,"6470 Main St, City",East,2025-11-29,Delivered
+SO,000069,2025-11-28,CUST008,Green Energy Co,WH001,"8874 Main St, City",South,2025-11-29,Cancelled
+SO,000070,2025-11-28,CUST001,ABC Manufacturing,WH003,"5957 Main St, City",Suburbs,2025-12-11,Cancelled
+SO,000071,2025-11-28,CUST009,Metro Logistics,WH003,"7235 Main St, City",Suburbs,2025-12-10,Delivered
+SO,000072,2025-11-28,CUST002,XYZ Industries,WH002,"5817 Main St, City",North,2025-12-06,Cancelled
+SO,000073,2025-11-29,CUST001,ABC Manufacturing,WH001,"1439 Main St, City",South,2025-12-06,Delivered
+SO,000074,2025-11-29,CUST003,Tech Solutions Ltd,WH002,"8529 Main St, City",Suburbs,2025-12-07,Delivered
+SO,000075,2025-11-29,CUST010,Quality Assurance Ltd,WH002,"1026 Main St, City",South,2025-12-10,Delivered
+SO,000076,2025-11-29,CUST004,BuildRight Construction,WH001,"2864 Main St, City",Downtown,2025-12-11,Delivered
+SO,000077,2025-11-29,CUST004,BuildRight Construction,WH002,"5863 Main St, City",West,2025-12-12,Delivered
+SO,000078,2025-11-29,CUST006,Office Pro Services,WH003,"8149 Main St, City",Suburbs,2025-12-08,Delivered
+SO,000079,2025-11-30,CUST006,Office Pro Services,WH002,"6662 Main St, City",Downtown,2025-12-02,Delivered
+SO,000080,2025-11-30,CUST002,XYZ Industries,WH001,"8755 Main St, City",East,2025-12-02,Delivered
+SO,000081,2025-11-30,CUST002,XYZ Industries,WH002,"1811 Main St, City",Central,2025-12-04,Delivered
+SO,000082,2025-11-30,CUST005,SafeWork Corp,WH003,"3371 Main St, City",South,2025-12-14,Delivered
+SO,000083,2025-11-30,CUST002,XYZ Industries,WH003,"4401 Main St, City",South,2025-12-13,Delivered
+SO,000084,2025-11-30,CUST009,Metro Logistics,WH003,"8202 Main St, City",West,2025-12-11,Delivered
+SO,000085,2025-11-30,CUST003,Tech Solutions Ltd,WH002,"5688 Main St, City",Suburbs,2025-12-08,Delivered
+SO,000086,2025-11-30,CUST004,BuildRight Construction,WH001,"7331 Main St, City",Downtown,2025-12-07,Delivered
+SO,000087,2025-12-01,CUST001,ABC Manufacturing,WH001,"3450 Main St, City",East,2025-12-15,Delivered
+SO,000088,2025-12-01,CUST004,BuildRight Construction,WH002,"4522 Main St, City",East,2025-12-02,Cancelled
+SO,000089,2025-12-01,CUST004,BuildRight Construction,WH003,"5564 Main St, City",North,2025-12-13,Delivered
+SO,000090,2025-12-01,CUST002,XYZ Industries,WH003,"7503 Main St, City",South,2025-12-07,Cancelled
+SO,000091,2025-12-01,CUST004,BuildRight Construction,WH003,"6691 Main St, City",East,2025-12-11,Delivered
+SO,000092,2025-12-01,CUST004,BuildRight Construction,WH003,"5875 Main St, City",Suburbs,2025-12-02,Cancelled
+SO,000093,2025-12-02,CUST009,Metro Logistics,WH002,"8758 Main St, City",Central,2025-12-12,Delivered
+SO,000094,2025-12-02,CUST004,BuildRight Construction,WH002,"8624 Main St, City",East,2025-12-06,Cancelled
+SO,000095,2025-12-02,CUST010,Quality Assurance Ltd,WH003,"2854 Main St, City",East,2025-12-14,Delivered
+SO,000096,2025-12-02,CUST005,SafeWork Corp,WH002,"1552 Main St, City",South,2025-12-14,Delivered
+SO,000097,2025-12-02,CUST002,XYZ Industries,WH003,"3096 Main St, City",West,2025-12-06,Cancelled
+SO,000098,2025-12-03,CUST003,Tech Solutions Ltd,WH002,"7164 Main St, City",Downtown,2025-12-15,Delivered
+SO,000099,2025-12-03,CUST003,Tech Solutions Ltd,WH002,"959 Main St, City",East,2025-12-06,Delivered
+SO,000100,2025-12-03,CUST007,Industrial Systems Inc,WH001,"7228 Main St, City",East,2025-12-12,Delivered
+SO,000101,2025-12-03,CUST010,Quality Assurance Ltd,WH002,"1923 Main St, City",North,2025-12-16,Delivered
+SO,000102,2025-12-03,CUST003,Tech Solutions Ltd,WH001,"7867 Main St, City",South,2025-12-05,Cancelled
+SO,000103,2025-12-04,CUST001,ABC Manufacturing,WH003,"3816 Main St, City",East,2025-12-15,Cancelled
+SO,000104,2025-12-04,CUST004,BuildRight Construction,WH002,"147 Main St, City",North,2025-12-16,Cancelled
+SO,000105,2025-12-04,CUST010,Quality Assurance Ltd,WH001,"1795 Main St, City",East,2025-12-07,Cancelled
+SO,000106,2025-12-04,CUST005,SafeWork Corp,WH001,"4362 Main St, City",North,2025-12-17,Cancelled
+SO,000107,2025-12-04,CUST007,Industrial Systems Inc,WH002,"4867 Main St, City",Suburbs,2025-12-11,Delivered
+SO,000108,2025-12-04,CUST003,Tech Solutions Ltd,WH002,"7907 Main St, City",North,2025-12-12,Delivered
+SO,000109,2025-12-04,CUST008,Green Energy Co,WH001,"3333 Main St, City",Central,2025-12-14,Delivered
+SO,000110,2025-12-04,CUST004,BuildRight Construction,WH003,"9405 Main St, City",Central,2025-12-18,Delivered
+SO,000111,2025-12-05,CUST009,Metro Logistics,WH003,"5813 Main St, City",East,2025-12-12,Delivered
+SO,000112,2025-12-05,CUST009,Metro Logistics,WH001,"460 Main St, City",East,2025-12-10,Cancelled
+SO,000113,2025-12-05,CUST010,Quality Assurance Ltd,WH003,"925 Main St, City",Downtown,2025-12-10,Delivered
+SO,000114,2025-12-05,CUST007,Industrial Systems Inc,WH001,"9803 Main St, City",Suburbs,2025-12-06,Delivered
+SO,000115,2025-12-05,CUST007,Industrial Systems Inc,WH003,"4816 Main St, City",Central,2025-12-16,Delivered
+SO,000116,2025-12-05,CUST009,Metro Logistics,WH001,"4794 Main St, City",Suburbs,2025-12-19,Delivered
+SO,000117,2025-12-05,CUST003,Tech Solutions Ltd,WH003,"9417 Main St, City",Downtown,2025-12-18,Delivered
+SO,000118,2025-12-05,CUST009,Metro Logistics,WH002,"9386 Main St, City",Central,2025-12-18,Delivered
+SO,000119,2025-12-06,CUST010,Quality Assurance Ltd,WH002,"766 Main St, City",Suburbs,2025-12-09,Delivered
+SO,000120,2025-12-06,CUST005,SafeWork Corp,WH002,"5874 Main St, City",Central,2025-12-15,Delivered
+SO,000121,2025-12-06,CUST008,Green Energy Co,WH003,"7383 Main St, City",East,2025-12-15,Delivered
+SO,000122,2025-12-07,CUST003,Tech Solutions Ltd,WH002,"6213 Main St, City",Suburbs,2025-12-15,Delivered
+SO,000123,2025-12-07,CUST007,Industrial Systems Inc,WH001,"8282 Main St, City",Suburbs,2025-12-14,Delivered
+SO,000124,2025-12-07,CUST003,Tech Solutions Ltd,WH003,"7435 Main St, City",Downtown,2025-12-16,Cancelled
+SO,000125,2025-12-07,CUST003,Tech Solutions Ltd,WH002,"9428 Main St, City",Central,2025-12-21,Delivered
+SO,000126,2025-12-08,CUST010,Quality Assurance Ltd,WH001,"6542 Main St, City",North,2025-12-18,Delivered
+SO,000127,2025-12-08,CUST004,BuildRight Construction,WH001,"958 Main St, City",South,2025-12-20,Delivered
+SO,000128,2025-12-08,CUST001,ABC Manufacturing,WH003,"9179 Main St, City",South,2025-12-11,Delivered
+SO,000129,2025-12-08,CUST009,Metro Logistics,WH002,"7813 Main St, City",East,2025-12-19,Delivered
+SO,000130,2025-12-08,CUST001,ABC Manufacturing,WH002,"9990 Main St, City",Suburbs,2025-12-16,Delivered
+SO,000131,2025-12-08,CUST006,Office Pro Services,WH002,"5261 Main St, City",West,2025-12-18,Delivered
+SO,000132,2025-12-09,CUST006,Office Pro Services,WH002,"4525 Main St, City",Suburbs,2025-12-14,Delivered
+SO,000133,2025-12-09,CUST003,Tech Solutions Ltd,WH002,"6200 Main St, City",West,2025-12-17,Delivered
+SO,000134,2025-12-09,CUST006,Office Pro Services,WH001,"8470 Main St, City",Central,2025-12-16,Delivered
+SO,000135,2025-12-09,CUST004,BuildRight Construction,WH001,"385 Main St, City",Central,2025-12-14,Delivered
+SO,000136,2025-12-09,CUST007,Industrial Systems Inc,WH002,"8200 Main St, City",South,2025-12-23,Delivered
+SO,000137,2025-12-09,CUST004,BuildRight Construction,WH002,"1149 Main St, City",East,2025-12-13,Cancelled
+SO,000138,2025-12-09,CUST004,BuildRight Construction,WH002,"8470 Main St, City",East,2025-12-16,Cancelled
+SO,000139,2025-12-09,CUST008,Green Energy Co,WH002,"2869 Main St, City",South,2025-12-12,Delivered
+SO,000140,2025-12-10,CUST008,Green Energy Co,WH001,"3543 Main St, City",Central,2025-12-11,Delivered
+SO,000141,2025-12-10,CUST003,Tech Solutions Ltd,WH001,"8544 Main St, City",West,2025-12-21,Delivered
+SO,000142,2025-12-10,CUST008,Green Energy Co,WH001,"9867 Main St, City",South,2025-12-16,Cancelled
+SO,000143,2025-12-10,CUST001,ABC Manufacturing,WH002,"9403 Main St, City",Suburbs,2025-12-14,Delivered
+SO,000144,2025-12-11,CUST004,BuildRight Construction,WH001,"4928 Main St, City",South,2025-12-19,Delivered
+SO,000145,2025-12-11,CUST007,Industrial Systems Inc,WH002,"1827 Main St, City",East,2025-12-12,Delivered
+SO,000146,2025-12-11,CUST002,XYZ Industries,WH001,"5190 Main St, City",West,2025-12-17,Delivered
+SO,000147,2025-12-11,CUST007,Industrial Systems Inc,WH003,"4042 Main St, City",North,2025-12-17,Delivered
+SO,000148,2025-12-11,CUST010,Quality Assurance Ltd,WH002,"9598 Main St, City",North,2025-12-22,Delivered
+SO,000149,2025-12-11,CUST007,Industrial Systems Inc,WH003,"2816 Main St, City",Downtown,2025-12-24,Cancelled
+SO,000150,2025-12-12,CUST009,Metro Logistics,WH002,"1909 Main St, City",East,2025-12-18,Delivered
+SO,000151,2025-12-12,CUST007,Industrial Systems Inc,WH003,"5016 Main St, City",Suburbs,2025-12-23,Delivered
+SO,000152,2025-12-12,CUST007,Industrial Systems Inc,WH002,"4576 Main St, City",Central,2025-12-22,Delivered
+SO,000153,2025-12-13,CUST003,Tech Solutions Ltd,WH002,"1435 Main St, City",Suburbs,2025-12-14,Cancelled
+SO,000154,2025-12-13,CUST010,Quality Assurance Ltd,WH001,"6835 Main St, City",South,2025-12-19,Cancelled
+SO,000155,2025-12-13,CUST008,Green Energy Co,WH001,"295 Main St, City",Suburbs,2025-12-26,Delivered
+SO,000156,2025-12-13,CUST004,BuildRight Construction,WH003,"6064 Main St, City",Downtown,2025-12-24,Delivered
+SO,000157,2025-12-13,CUST001,ABC Manufacturing,WH003,"461 Main St, City",East,2025-12-23,Cancelled
+SO,000158,2025-12-13,CUST001,ABC Manufacturing,WH003,"6727 Main St, City",East,2025-12-16,Cancelled
+SO,000159,2025-12-13,CUST005,SafeWork Corp,WH001,"2768 Main St, City",East,2025-12-27,Cancelled
+SO,000160,2025-12-14,CUST006,Office Pro Services,WH002,"1442 Main St, City",Central,2025-12-27,Delivered
+SO,000161,2025-12-14,CUST010,Quality Assurance Ltd,WH003,"2988 Main St, City",East,2025-12-17,Delivered
+SO,000162,2025-12-14,CUST003,Tech Solutions Ltd,WH003,"5968 Main St, City",West,2025-12-16,Cancelled
+SO,000163,2025-12-14,CUST003,Tech Solutions Ltd,WH003,"9191 Main St, City",North,2025-12-16,Delivered
+SO,000164,2025-12-14,CUST006,Office Pro Services,WH002,"3837 Main St, City",West,2025-12-20,Delivered
+SO,000165,2025-12-14,CUST007,Industrial Systems Inc,WH002,"4607 Main St, City",West,2025-12-21,Delivered
+SO,000166,2025-12-14,CUST010,Quality Assurance Ltd,WH003,"6496 Main St, City",Downtown,2025-12-18,Delivered
+SO,000167,2025-12-14,CUST001,ABC Manufacturing,WH002,"1431 Main St, City",West,2025-12-28,Delivered
+SO,000168,2025-12-15,CUST008,Green Energy Co,WH001,"3308 Main St, City",West,2025-12-24,Delivered
+SO,000169,2025-12-15,CUST010,Quality Assurance Ltd,WH001,"8754 Main St, City",West,2025-12-22,Delivered
+SO,000170,2025-12-15,CUST007,Industrial Systems Inc,WH003,"8070 Main St, City",Central,2025-12-17,Delivered
+SO,000171,2025-12-15,CUST005,SafeWork Corp,WH003,"3488 Main St, City",Suburbs,2025-12-19,Cancelled
+SO,000172,2025-12-15,CUST005,SafeWork Corp,WH001,"2831 Main St, City",Central,2025-12-27,Cancelled
+SO,000173,2025-12-16,CUST006,Office Pro Services,WH001,"9128 Main St, City",Downtown,2025-12-18,Delivered
+SO,000174,2025-12-16,CUST003,Tech Solutions Ltd,WH002,"1377 Main St, City",Central,2025-12-17,Delivered
+SO,000175,2025-12-16,CUST005,SafeWork Corp,WH002,"6426 Main St, City",West,2025-12-22,Cancelled
+SO,000176,2025-12-16,CUST001,ABC Manufacturing,WH003,"2519 Main St, City",Downtown,2025-12-18,Cancelled
+SO,000177,2025-12-16,CUST005,SafeWork Corp,WH003,"5379 Main St, City",North,2025-12-25,Delivered
+SO,000178,2025-12-17,CUST010,Quality Assurance Ltd,WH001,"6890 Main St, City",Downtown,2025-12-26,Cancelled
+SO,000179,2025-12-17,CUST004,BuildRight Construction,WH002,"1343 Main St, City",Downtown,2025-12-24,Delivered
+SO,000180,2025-12-17,CUST006,Office Pro Services,WH002,"1467 Main St, City",Downtown,2025-12-30,Cancelled
+SO,000181,2025-12-17,CUST006,Office Pro Services,WH002,"774 Main St, City",Suburbs,2025-12-22,Delivered
+SO,000182,2025-12-18,CUST001,ABC Manufacturing,WH002,"2533 Main St, City",South,2025-12-31,Delivered
+SO,000183,2025-12-18,CUST002,XYZ Industries,WH003,"3720 Main St, City",East,2025-12-25,Cancelled
+SO,000184,2025-12-18,CUST001,ABC Manufacturing,WH003,"750 Main St, City",Suburbs,2025-12-26,Delivered
+SO,000185,2025-12-18,CUST009,Metro Logistics,WH001,"8141 Main St, City",South,2025-12-29,Delivered
+SO,000186,2025-12-18,CUST010,Quality Assurance Ltd,WH001,"9813 Main St, City",East,2025-12-21,Delivered
+SO,000187,2025-12-18,CUST002,XYZ Industries,WH003,"104 Main St, City",Downtown,2025-12-31,Delivered
+SO,000188,2025-12-18,CUST003,Tech Solutions Ltd,WH003,"6236 Main St, City",East,2025-12-20,Delivered
+SO,000189,2025-12-19,CUST004,BuildRight Construction,WH003,"7515 Main St, City",Central,2025-12-23,Cancelled
+SO,000190,2025-12-19,CUST005,SafeWork Corp,WH003,"6223 Main St, City",North,2025-12-24,Delivered
+SO,000191,2025-12-19,CUST004,BuildRight Construction,WH003,"4785 Main St, City",Suburbs,2025-12-30,Cancelled
+SO,000192,2025-12-19,CUST005,SafeWork Corp,WH002,"1258 Main St, City",East,2025-12-21,Delivered
+SO,000193,2025-12-20,CUST008,Green Energy Co,WH002,"4411 Main St, City",West,2025-12-30,Delivered
+SO,000194,2025-12-20,CUST009,Metro Logistics,WH002,"8099 Main St, City",North,2025-12-21,Delivered
+SO,000195,2025-12-20,CUST004,BuildRight Construction,WH003,"814 Main St, City",West,2025-12-22,Delivered
+SO,000196,2025-12-20,CUST003,Tech Solutions Ltd,WH002,"8015 Main St, City",Suburbs,2025-12-26,Delivered
+SO,000197,2025-12-20,CUST003,Tech Solutions Ltd,WH003,"5166 Main St, City",Suburbs,2025-12-27,Delivered
+SO,000198,2025-12-20,CUST002,XYZ Industries,WH003,"2914 Main St, City",North,2026-01-03,Delivered
+SO,000199,2025-12-20,CUST003,Tech Solutions Ltd,WH002,"9154 Main St, City",Central,2026-01-01,Delivered
+SO,000200,2025-12-21,CUST003,Tech Solutions Ltd,WH001,"6442 Main St, City",Downtown,2026-01-01,Cancelled
+SO,000201,2025-12-21,CUST010,Quality Assurance Ltd,WH002,"2713 Main St, City",Suburbs,2025-12-24,Delivered
+SO,000202,2025-12-21,CUST010,Quality Assurance Ltd,WH002,"228 Main St, City",East,2025-12-31,Cancelled
+SO,000203,2025-12-21,CUST003,Tech Solutions Ltd,WH003,"3163 Main St, City",Suburbs,2026-01-04,Delivered
+SO,000204,2025-12-21,CUST008,Green Energy Co,WH002,"3082 Main St, City",West,2025-12-30,Delivered
+SO,000205,2025-12-21,CUST009,Metro Logistics,WH002,"4014 Main St, City",East,2026-01-01,Delivered
+SO,000206,2025-12-22,CUST006,Office Pro Services,WH002,"2203 Main St, City",Suburbs,2026-01-05,Delivered
+SO,000207,2025-12-22,CUST009,Metro Logistics,WH001,"7299 Main St, City",Downtown,2025-12-25,Delivered
+SO,000208,2025-12-22,CUST001,ABC Manufacturing,WH002,"541 Main St, City",Downtown,2026-01-01,Delivered
+SO,000209,2025-12-22,CUST004,BuildRight Construction,WH002,"3873 Main St, City",Suburbs,2025-12-26,Delivered
+SO,000210,2025-12-22,CUST003,Tech Solutions Ltd,WH002,"6998 Main St, City",Downtown,2025-12-29,Delivered
+SO,000211,2025-12-22,CUST007,Industrial Systems Inc,WH003,"8789 Main St, City",South,2025-12-26,Delivered
+SO,000212,2025-12-22,CUST009,Metro Logistics,WH002,"6915 Main St, City",Suburbs,2025-12-26,Delivered
+SO,000213,2025-12-22,CUST010,Quality Assurance Ltd,WH001,"7829 Main St, City",Downtown,2025-12-25,Delivered
+SO,000214,2025-12-23,CUST006,Office Pro Services,WH003,"4582 Main St, City",Suburbs,2025-12-25,Delivered
+SO,000215,2025-12-23,CUST007,Industrial Systems Inc,WH001,"8731 Main St, City",South,2026-01-03,Delivered
+SO,000216,2025-12-23,CUST010,Quality Assurance Ltd,WH002,"5873 Main St, City",West,2026-01-02,Cancelled
+SO,000217,2025-12-23,CUST004,BuildRight Construction,WH003,"946 Main St, City",North,2025-12-25,Delivered
+SO,000218,2025-12-23,CUST005,SafeWork Corp,WH001,"2439 Main St, City",West,2025-12-25,Delivered
+SO,000219,2025-12-24,CUST008,Green Energy Co,WH003,"1761 Main St, City",Downtown,2025-12-27,Delivered
+SO,000220,2025-12-24,CUST007,Industrial Systems Inc,WH003,"5613 Main St, City",Central,2025-12-27,Delivered
+SO,000221,2025-12-24,CUST001,ABC Manufacturing,WH003,"305 Main St, City",Central,2025-12-27,Delivered
+SO,000222,2025-12-24,CUST008,Green Energy Co,WH001,"8660 Main St, City",East,2026-01-02,Delivered
+SO,000223,2025-12-24,CUST007,Industrial Systems Inc,WH002,"9067 Main St, City",West,2026-01-05,Delivered
+SO,000224,2025-12-24,CUST009,Metro Logistics,WH002,"2945 Main St, City",West,2026-01-01,Cancelled
+SO,000225,2025-12-25,CUST004,BuildRight Construction,WH003,"5391 Main St, City",Suburbs,2026-01-03,Delivered
+SO,000226,2025-12-25,CUST010,Quality Assurance Ltd,WH002,"7818 Main St, City",East,2026-01-06,Delivered
+SO,000227,2025-12-25,CUST004,BuildRight Construction,WH001,"2673 Main St, City",Downtown,2026-01-01,Cancelled
+SO,000228,2025-12-25,CUST010,Quality Assurance Ltd,WH001,"6475 Main St, City",Downtown,2025-12-29,Delivered
+SO,000229,2025-12-25,CUST004,BuildRight Construction,WH002,"5895 Main St, City",North,2025-12-29,Delivered
+SO,000230,2025-12-25,CUST009,Metro Logistics,WH001,"9348 Main St, City",Suburbs,2025-12-30,Delivered
+SO,000231,2025-12-26,CUST006,Office Pro Services,WH003,"840 Main St, City",Central,2025-12-27,Delivered
+SO,000232,2025-12-26,CUST005,SafeWork Corp,WH001,"373 Main St, City",East,2026-01-05,Delivered
+SO,000233,2025-12-26,CUST003,Tech Solutions Ltd,WH002,"6481 Main St, City",West,2026-01-04,Delivered
+SO,000234,2025-12-26,CUST006,Office Pro Services,WH002,"840 Main St, City",Suburbs,2026-01-01,Delivered
+SO,000235,2025-12-26,CUST002,XYZ Industries,WH002,"9926 Main St, City",Central,2026-01-05,Delivered
+SO,000236,2025-12-27,CUST010,Quality Assurance Ltd,WH001,"6663 Main St, City",Downtown,2025-12-30,Cancelled
+SO,000237,2025-12-27,CUST001,ABC Manufacturing,WH002,"7020 Main St, City",North,2026-01-05,Delivered
+SO,000238,2025-12-27,CUST006,Office Pro Services,WH002,"2394 Main St, City",South,2026-01-01,Delivered
+SO,000239,2025-12-27,CUST007,Industrial Systems Inc,WH001,"6374 Main St, City",Downtown,2025-12-28,Delivered
+SO,000240,2025-12-27,CUST007,Industrial Systems Inc,WH003,"1180 Main St, City",Downtown,2026-01-09,Delivered
+SO,000241,2025-12-27,CUST008,Green Energy Co,WH003,"608 Main St, City",West,2026-01-07,Delivered
+SO,000242,2025-12-27,CUST005,SafeWork Corp,WH001,"2614 Main St, City",South,2026-01-05,Delivered
+SO,000243,2025-12-27,CUST008,Green Energy Co,WH003,"7218 Main St, City",East,2026-01-10,Delivered
+SO,000244,2025-12-28,CUST010,Quality Assurance Ltd,WH002,"8212 Main St, City",North,2026-01-03,Cancelled
+SO,000245,2025-12-28,CUST004,BuildRight Construction,WH001,"229 Main St, City",North,2026-01-02,Delivered
+SO,000246,2025-12-28,CUST008,Green Energy Co,WH003,"8717 Main St, City",South,2025-12-29,Cancelled
+SO,000247,2025-12-28,CUST001,ABC Manufacturing,WH001,"1166 Main St, City",South,2025-12-29,Delivered
+SO,000248,2025-12-28,CUST002,XYZ Industries,WH003,"5379 Main St, City",Suburbs,2026-01-10,Delivered
+SO,000249,2025-12-28,CUST003,Tech Solutions Ltd,WH002,"6497 Main St, City",North,2025-12-30,Delivered
+SO,000250,2025-12-28,CUST009,Metro Logistics,WH003,"6661 Main St, City",North,2026-01-04,Delivered
+SO,000251,2025-12-28,CUST001,ABC Manufacturing,WH001,"1484 Main St, City",West,2026-01-03,Delivered
+SO,000252,2025-12-29,CUST005,SafeWork Corp,WH001,"4997 Main St, City",Central,2026-01-12,Delivered
+SO,000253,2025-12-29,CUST006,Office Pro Services,WH003,"1275 Main St, City",Central,2026-01-04,Delivered
+SO,000254,2025-12-29,CUST002,XYZ Industries,WH003,"8747 Main St, City",East,2026-01-04,Delivered
+SO,000255,2025-12-30,CUST001,ABC Manufacturing,WH002,"9206 Main St, City",West,2026-01-03,Delivered
+SO,000256,2025-12-30,CUST009,Metro Logistics,WH001,"8410 Main St, City",Central,2026-01-06,Delivered
+SO,000257,2025-12-30,CUST007,Industrial Systems Inc,WH003,"4677 Main St, City",West,2025-12-31,Delivered
+SO,000258,2025-12-31,CUST001,ABC Manufacturing,WH001,"1439 Main St, City",Suburbs,2026-01-01,Delivered
+SO,000259,2025-12-31,CUST005,SafeWork Corp,WH001,"3464 Main St, City",Downtown,2026-01-07,Delivered
+SO,000260,2025-12-31,CUST010,Quality Assurance Ltd,WH003,"2151 Main St, City",South,2026-01-11,Delivered
+SO,000261,2025-12-31,CUST002,XYZ Industries,WH001,"4013 Main St, City",Suburbs,2026-01-03,Delivered
+SO,000262,2025-12-31,CUST008,Green Energy Co,WH003,"4247 Main St, City",Downtown,2026-01-13,Delivered
+SO,000263,2026-01-01,CUST006,Office Pro Services,WH003,"7014 Main St, City",Downtown,2026-01-12,Delivered
+SO,000264,2026-01-01,CUST004,BuildRight Construction,WH001,"4250 Main St, City",North,2026-01-12,Cancelled
+SO,000265,2026-01-01,CUST006,Office Pro Services,WH003,"2999 Main St, City",Suburbs,2026-01-14,Cancelled
+SO,000266,2026-01-01,CUST010,Quality Assurance Ltd,WH001,"2227 Main St, City",Central,2026-01-04,Cancelled
+SO,000267,2026-01-01,CUST006,Office Pro Services,WH002,"7434 Main St, City",North,2026-01-07,Cancelled
+SO,000268,2026-01-02,CUST005,SafeWork Corp,WH002,"2231 Main St, City",North,2026-01-10,Delivered
+SO,000269,2026-01-02,CUST007,Industrial Systems Inc,WH002,"2917 Main St, City",West,2026-01-07,Delivered
+SO,000270,2026-01-02,CUST007,Industrial Systems Inc,WH003,"2322 Main St, City",East,2026-01-04,Cancelled
+SO,000271,2026-01-02,CUST001,ABC Manufacturing,WH001,"7867 Main St, City",East,2026-01-10,Delivered
+SO,000272,2026-01-02,CUST008,Green Energy Co,WH002,"7123 Main St, City",Suburbs,2026-01-07,Delivered
+SO,000273,2026-01-03,CUST006,Office Pro Services,WH003,"6028 Main St, City",Central,2026-01-07,Delivered
+SO,000274,2026-01-03,CUST008,Green Energy Co,WH003,"604 Main St, City",Central,2026-01-09,Delivered
+SO,000275,2026-01-03,CUST004,BuildRight Construction,WH002,"372 Main St, City",South,2026-01-09,Cancelled
+SO,000276,2026-01-03,CUST007,Industrial Systems Inc,WH002,"127 Main St, City",North,2026-01-08,Delivered
+SO,000277,2026-01-03,CUST005,SafeWork Corp,WH001,"3030 Main St, City",East,2026-01-15,Cancelled
+SO,000278,2026-01-03,CUST008,Green Energy Co,WH002,"3963 Main St, City",Suburbs,2026-01-04,Delivered
+SO,000279,2026-01-03,CUST003,Tech Solutions Ltd,WH002,"2533 Main St, City",Suburbs,2026-01-05,Delivered
+SO,000280,2026-01-03,CUST006,Office Pro Services,WH001,"3358 Main St, City",West,2026-01-08,Delivered
+SO,000281,2026-01-04,CUST001,ABC Manufacturing,WH001,"6327 Main St, City",North,2026-01-14,Delivered
+SO,000282,2026-01-04,CUST003,Tech Solutions Ltd,WH003,"2073 Main St, City",West,2026-01-18,Delivered
+SO,000283,2026-01-04,CUST003,Tech Solutions Ltd,WH002,"2712 Main St, City",Suburbs,2026-01-07,Delivered
+SO,000284,2026-01-05,CUST003,Tech Solutions Ltd,WH001,"5451 Main St, City",South,2026-01-06,Delivered
+SO,000285,2026-01-05,CUST004,BuildRight Construction,WH001,"2310 Main St, City",Downtown,2026-01-15,Delivered
+SO,000286,2026-01-05,CUST001,ABC Manufacturing,WH002,"2464 Main St, City",Downtown,2026-01-14,Cancelled
+SO,000287,2026-01-05,CUST001,ABC Manufacturing,WH002,"8705 Main St, City",North,2026-01-06,Delivered
+SO,000288,2026-01-05,CUST009,Metro Logistics,WH002,"8637 Main St, City",East,2026-01-11,Delivered
+SO,000289,2026-01-05,CUST003,Tech Solutions Ltd,WH002,"4608 Main St, City",Central,2026-01-11,Delivered
+SO,000290,2026-01-05,CUST002,XYZ Industries,WH002,"3381 Main St, City",North,2026-01-10,Delivered
+SO,000291,2026-01-06,CUST003,Tech Solutions Ltd,WH003,"101 Main St, City",Suburbs,2026-01-10,Cancelled
+SO,000292,2026-01-06,CUST001,ABC Manufacturing,WH003,"1373 Main St, City",North,2026-01-16,Delivered
+SO,000293,2026-01-06,CUST001,ABC Manufacturing,WH001,"3947 Main St, City",North,2026-01-07,Delivered
+SO,000294,2026-01-06,CUST009,Metro Logistics,WH001,"8211 Main St, City",West,2026-01-14,Delivered
+SO,000295,2026-01-06,CUST004,BuildRight Construction,WH001,"7936 Main St, City",East,2026-01-14,Delivered
+SO,000296,2026-01-06,CUST006,Office Pro Services,WH002,"5743 Main St, City",North,2026-01-20,Delivered
+SO,000297,2026-01-06,CUST006,Office Pro Services,WH003,"1926 Main St, City",Suburbs,2026-01-09,Delivered
+SO,000298,2026-01-07,CUST003,Tech Solutions Ltd,WH002,"3082 Main St, City",North,2026-01-15,Delivered
+SO,000299,2026-01-07,CUST004,BuildRight Construction,WH003,"3688 Main St, City",Central,2026-01-20,Delivered
+SO,000300,2026-01-07,CUST010,Quality Assurance Ltd,WH002,"1566 Main St, City",West,2026-01-21,Delivered
+SO,000301,2026-01-07,CUST001,ABC Manufacturing,WH003,"8676 Main St, City",West,2026-01-09,Delivered
+SO,000302,2026-01-08,CUST007,Industrial Systems Inc,WH003,"5562 Main St, City",North,2026-01-09,Delivered
+SO,000303,2026-01-08,CUST001,ABC Manufacturing,WH002,"8208 Main St, City",East,2026-01-13,Cancelled
+SO,000304,2026-01-08,CUST010,Quality Assurance Ltd,WH003,"5731 Main St, City",Suburbs,2026-01-18,Delivered
+SO,000305,2026-01-08,CUST009,Metro Logistics,WH001,"9252 Main St, City",East,2026-01-13,Delivered
+SO,000306,2026-01-09,CUST002,XYZ Industries,WH003,"8908 Main St, City",North,2026-01-21,Delivered
+SO,000307,2026-01-09,CUST001,ABC Manufacturing,WH001,"600 Main St, City",Suburbs,2026-01-16,Delivered
+SO,000308,2026-01-09,CUST002,XYZ Industries,WH003,"2639 Main St, City",North,2026-01-12,Delivered
+SO,000309,2026-01-09,CUST003,Tech Solutions Ltd,WH001,"2248 Main St, City",Central,2026-01-23,Delivered
+SO,000310,2026-01-09,CUST004,BuildRight Construction,WH002,"2001 Main St, City",West,2026-01-20,Cancelled
+SO,000311,2026-01-10,CUST006,Office Pro Services,WH001,"8520 Main St, City",West,2026-01-19,Delivered
+SO,000312,2026-01-10,CUST006,Office Pro Services,WH003,"1892 Main St, City",South,2026-01-19,Delivered
+SO,000313,2026-01-10,CUST001,ABC Manufacturing,WH003,"7839 Main St, City",Central,2026-01-16,Cancelled
+SO,000314,2026-01-10,CUST001,ABC Manufacturing,WH001,"5621 Main St, City",North,2026-01-14,Delivered
+SO,000315,2026-01-10,CUST010,Quality Assurance Ltd,WH002,"9023 Main St, City",South,2026-01-13,Cancelled
+SO,000316,2026-01-10,CUST001,ABC Manufacturing,WH003,"1177 Main St, City",South,2026-01-23,Delivered
+SO,000317,2026-01-10,CUST004,BuildRight Construction,WH002,"1824 Main St, City",Downtown,2026-01-18,Delivered
+SO,000318,2026-01-11,CUST004,BuildRight Construction,WH001,"9409 Main St, City",Central,2026-01-13,Delivered
+SO,000319,2026-01-11,CUST010,Quality Assurance Ltd,WH001,"4234 Main St, City",Suburbs,2026-01-21,Delivered
+SO,000320,2026-01-11,CUST009,Metro Logistics,WH002,"6067 Main St, City",North,2026-01-17,Delivered
+SO,000321,2026-01-11,CUST002,XYZ Industries,WH001,"5377 Main St, City",West,2026-01-15,Delivered
+SO,000322,2026-01-11,CUST004,BuildRight Construction,WH003,"1945 Main St, City",West,2026-01-15,Delivered
+SO,000323,2026-01-11,CUST001,ABC Manufacturing,WH003,"962 Main St, City",Downtown,2026-01-14,Delivered
+SO,000324,2026-01-11,CUST010,Quality Assurance Ltd,WH001,"6571 Main St, City",South,2026-01-18,Cancelled
+SO,000325,2026-01-11,CUST001,ABC Manufacturing,WH001,"6283 Main St, City",East,2026-01-13,Delivered
+SO,000326,2026-01-12,CUST003,Tech Solutions Ltd,WH002,"2298 Main St, City",North,2026-01-25,Delivered
+SO,000327,2026-01-12,CUST004,BuildRight Construction,WH001,"9598 Main St, City",East,2026-01-25,Cancelled
+SO,000328,2026-01-12,CUST003,Tech Solutions Ltd,WH003,"4048 Main St, City",Central,2026-01-14,Cancelled
+SO,000329,2026-01-12,CUST003,Tech Solutions Ltd,WH003,"8738 Main St, City",Suburbs,2026-01-13,Delivered
+SO,000330,2026-01-13,CUST002,XYZ Industries,WH003,"5641 Main St, City",West,2026-01-18,Delivered
+SO,000331,2026-01-13,CUST007,Industrial Systems Inc,WH002,"747 Main St, City",Downtown,2026-01-21,Delivered
+SO,000332,2026-01-13,CUST002,XYZ Industries,WH001,"6913 Main St, City",Downtown,2026-01-22,Delivered
+SO,000333,2026-01-13,CUST007,Industrial Systems Inc,WH001,"7943 Main St, City",Suburbs,2026-01-14,Delivered
+SO,000334,2026-01-13,CUST001,ABC Manufacturing,WH001,"6851 Main St, City",Downtown,2026-01-22,Delivered
+SO,000335,2026-01-13,CUST002,XYZ Industries,WH002,"5704 Main St, City",Central,2026-01-23,Delivered
+SO,000336,2026-01-14,CUST002,XYZ Industries,WH003,"7722 Main St, City",East,2026-01-15,Cancelled
+SO,000337,2026-01-14,CUST007,Industrial Systems Inc,WH001,"3111 Main St, City",West,2026-01-15,Cancelled
+SO,000338,2026-01-14,CUST007,Industrial Systems Inc,WH001,"6119 Main St, City",Downtown,2026-01-26,Delivered
+SO,000339,2026-01-14,CUST009,Metro Logistics,WH001,"2127 Main St, City",North,2026-01-24,Delivered
+SO,000340,2026-01-14,CUST008,Green Energy Co,WH002,"3417 Main St, City",East,2026-01-15,Delivered
+SO,000341,2026-01-14,CUST010,Quality Assurance Ltd,WH001,"538 Main St, City",East,2026-01-20,Delivered
+SO,000342,2026-01-14,CUST006,Office Pro Services,WH003,"506 Main St, City",Suburbs,2026-01-17,Delivered
+SO,000343,2026-01-15,CUST004,BuildRight Construction,WH001,"890 Main St, City",Suburbs,2026-01-19,Delivered
+SO,000344,2026-01-15,CUST007,Industrial Systems Inc,WH002,"8668 Main St, City",West,2026-01-23,Delivered
+SO,000345,2026-01-15,CUST009,Metro Logistics,WH003,"3050 Main St, City",West,2026-01-18,Delivered
+SO,000346,2026-01-15,CUST008,Green Energy Co,WH003,"531 Main St, City",North,2026-01-16,Delivered
+SO,000347,2026-01-15,CUST003,Tech Solutions Ltd,WH001,"6756 Main St, City",Suburbs,2026-01-26,Delivered
+SO,000348,2026-01-15,CUST001,ABC Manufacturing,WH002,"5705 Main St, City",West,2026-01-27,Delivered
+SO,000349,2026-01-15,CUST003,Tech Solutions Ltd,WH002,"9222 Main St, City",West,2026-01-25,Delivered
+SO,000350,2026-01-15,CUST009,Metro Logistics,WH003,"2209 Main St, City",West,2026-01-24,Delivered
+SO,000351,2026-01-16,CUST007,Industrial Systems Inc,WH002,"8752 Main St, City",East,2026-01-19,Delivered
+SO,000352,2026-01-16,CUST001,ABC Manufacturing,WH003,"3965 Main St, City",West,2026-01-25,Delivered
+SO,000353,2026-01-16,CUST009,Metro Logistics,WH003,"137 Main St, City",West,2026-01-17,Delivered
+SO,000354,2026-01-16,CUST009,Metro Logistics,WH002,"4607 Main St, City",North,2026-01-21,Delivered
+SO,000355,2026-01-17,CUST010,Quality Assurance Ltd,WH002,"851 Main St, City",North,2026-01-20,Cancelled
+SO,000356,2026-01-17,CUST001,ABC Manufacturing,WH003,"7101 Main St, City",West,2026-01-29,Cancelled
+SO,000357,2026-01-17,CUST010,Quality Assurance Ltd,WH002,"3469 Main St, City",West,2026-01-27,Delivered
+SO,000358,2026-01-17,CUST007,Industrial Systems Inc,WH002,"5348 Main St, City",North,2026-01-26,Delivered
+SO,000359,2026-01-17,CUST010,Quality Assurance Ltd,WH003,"8809 Main St, City",Suburbs,2026-01-24,Delivered
+SO,000360,2026-01-17,CUST003,Tech Solutions Ltd,WH001,"9236 Main St, City",Downtown,2026-01-25,Cancelled
+SO,000361,2026-01-18,CUST005,SafeWork Corp,WH001,"6851 Main St, City",North,2026-01-23,Delivered
+SO,000362,2026-01-18,CUST004,BuildRight Construction,WH001,"549 Main St, City",South,2026-01-30,Delivered
+SO,000363,2026-01-18,CUST003,Tech Solutions Ltd,WH003,"5677 Main St, City",Central,2026-01-21,Delivered
+SO,000364,2026-01-18,CUST006,Office Pro Services,WH001,"1873 Main St, City",North,2026-01-23,Delivered
+SO,000365,2026-01-18,CUST003,Tech Solutions Ltd,WH001,"6575 Main St, City",East,2026-02-01,Delivered
+SO,000366,2026-01-19,CUST004,BuildRight Construction,WH003,"5582 Main St, City",Downtown,2026-01-27,Cancelled
+SO,000367,2026-01-19,CUST005,SafeWork Corp,WH003,"9257 Main St, City",East,2026-01-29,Delivered
+SO,000368,2026-01-19,CUST005,SafeWork Corp,WH001,"4840 Main St, City",Downtown,2026-01-31,Delivered
+SO,000369,2026-01-20,CUST008,Green Energy Co,WH003,"9017 Main St, City",Central,2026-01-28,Delivered
+SO,000370,2026-01-20,CUST007,Industrial Systems Inc,WH002,"657 Main St, City",South,2026-01-24,Delivered
+SO,000371,2026-01-20,CUST005,SafeWork Corp,WH001,"1894 Main St, City",South,2026-01-31,Cancelled
+SO,000372,2026-01-20,CUST004,BuildRight Construction,WH001,"4174 Main St, City",Suburbs,2026-01-29,Delivered
+SO,000373,2026-01-20,CUST003,Tech Solutions Ltd,WH002,"9948 Main St, City",South,2026-02-01,Delivered
+SO,000374,2026-01-20,CUST001,ABC Manufacturing,WH003,"9693 Main St, City",Suburbs,2026-01-24,Delivered
+SO,000375,2026-01-20,CUST004,BuildRight Construction,WH003,"102 Main St, City",South,2026-01-25,Cancelled
+SO,000376,2026-01-20,CUST006,Office Pro Services,WH003,"3688 Main St, City",Suburbs,2026-01-22,Cancelled
+SO,000377,2026-01-21,CUST001,ABC Manufacturing,WH003,"8855 Main St, City",Central,2026-01-26,Delivered
+SO,000378,2026-01-21,CUST007,Industrial Systems Inc,WH003,"3739 Main St, City",South,2026-01-24,Delivered
+SO,000379,2026-01-21,CUST002,XYZ Industries,WH002,"4764 Main St, City",West,2026-01-24,Delivered
+SO,000380,2026-01-21,CUST005,SafeWork Corp,WH003,"8924 Main St, City",North,2026-01-27,Delivered
+SO,000381,2026-01-21,CUST010,Quality Assurance Ltd,WH002,"8571 Main St, City",West,2026-02-02,Delivered
+SO,000382,2026-01-21,CUST002,XYZ Industries,WH001,"8445 Main St, City",Central,2026-02-04,Delivered
+SO,000383,2026-01-22,CUST010,Quality Assurance Ltd,WH003,"6017 Main St, City",North,2026-01-28,Delivered
+SO,000384,2026-01-22,CUST004,BuildRight Construction,WH003,"9843 Main St, City",East,2026-02-05,Delivered
+SO,000385,2026-01-22,CUST007,Industrial Systems Inc,WH001,"8366 Main St, City",South,2026-01-24,Delivered
+SO,000386,2026-01-22,CUST002,XYZ Industries,WH002,"6525 Main St, City",North,2026-01-26,Delivered
+SO,000387,2026-01-23,CUST008,Green Energy Co,WH002,"814 Main St, City",West,2026-01-25,Delivered
+SO,000388,2026-01-23,CUST006,Office Pro Services,WH003,"5255 Main St, City",Downtown,2026-01-27,Delivered
+SO,000389,2026-01-23,CUST008,Green Energy Co,WH002,"5461 Main St, City",South,2026-01-24,Delivered
+SO,000390,2026-01-23,CUST010,Quality Assurance Ltd,WH003,"191 Main St, City",South,2026-02-01,Delivered
+SO,000391,2026-01-23,CUST007,Industrial Systems Inc,WH002,"5361 Main St, City",North,2026-01-26,Delivered
+SO,000392,2026-01-24,CUST007,Industrial Systems Inc,WH002,"3523 Main St, City",East,2026-01-25,Delivered
+SO,000393,2026-01-24,CUST002,XYZ Industries,WH002,"5767 Main St, City",Suburbs,2026-02-05,Delivered
+SO,000394,2026-01-24,CUST008,Green Energy Co,WH001,"440 Main St, City",Downtown,2026-01-25,Cancelled
+SO,000395,2026-01-24,CUST004,BuildRight Construction,WH002,"9998 Main St, City",East,2026-01-30,Delivered
+SO,000396,2026-01-24,CUST001,ABC Manufacturing,WH001,"4468 Main St, City",North,2026-01-30,Delivered
+SO,000397,2026-01-24,CUST001,ABC Manufacturing,WH002,"5353 Main St, City",West,2026-01-31,Delivered
+SO,000398,2026-01-25,CUST009,Metro Logistics,WH003,"6318 Main St, City",West,2026-02-07,Delivered
+SO,000399,2026-01-25,CUST004,BuildRight Construction,WH001,"6079 Main St, City",North,2026-02-07,Delivered
+SO,000400,2026-01-25,CUST008,Green Energy Co,WH003,"5838 Main St, City",Downtown,2026-01-28,Delivered
+SO,000401,2026-01-25,CUST004,BuildRight Construction,WH001,"5142 Main St, City",West,2026-01-29,Cancelled
+SO,000402,2026-01-25,CUST008,Green Energy Co,WH002,"6259 Main St, City",Downtown,2026-02-07,Delivered
+SO,000403,2026-01-25,CUST003,Tech Solutions Ltd,WH003,"7364 Main St, City",Downtown,2026-02-02,Delivered
+SO,000404,2026-01-25,CUST002,XYZ Industries,WH002,"7444 Main St, City",North,2026-02-06,Delivered
+SO,000405,2026-01-26,CUST001,ABC Manufacturing,WH003,"8644 Main St, City",West,2026-01-28,Delivered
+SO,000406,2026-01-26,CUST001,ABC Manufacturing,WH002,"8476 Main St, City",South,2026-02-08,Delivered
+SO,000407,2026-01-26,CUST005,SafeWork Corp,WH003,"1963 Main St, City",Central,2026-02-02,Cancelled
+SO,000408,2026-01-26,CUST009,Metro Logistics,WH001,"2379 Main St, City",North,2026-01-29,Delivered
+SO,000409,2026-01-26,CUST006,Office Pro Services,WH003,"8365 Main St, City",Central,2026-02-02,Delivered
+SO,000410,2026-01-26,CUST005,SafeWork Corp,WH003,"8237 Main St, City",West,2026-02-02,Cancelled
+SO,000411,2026-01-26,CUST005,SafeWork Corp,WH002,"7211 Main St, City",Central,2026-02-03,Delivered
+SO,000412,2026-01-27,CUST007,Industrial Systems Inc,WH003,"8013 Main St, City",West,2026-02-02,Cancelled
+SO,000413,2026-01-27,CUST004,BuildRight Construction,WH002,"1458 Main St, City",North,2026-02-04,Delivered
+SO,000414,2026-01-27,CUST004,BuildRight Construction,WH003,"2337 Main St, City",West,2026-02-01,Delivered
+SO,000415,2026-01-27,CUST009,Metro Logistics,WH002,"5385 Main St, City",East,2026-01-28,Delivered
+SO,000416,2026-01-27,CUST009,Metro Logistics,WH001,"7190 Main St, City",South,2026-01-30,Delivered
+SO,000417,2026-01-28,CUST004,BuildRight Construction,WH001,"2475 Main St, City",North,2026-02-06,Delivered
+SO,000418,2026-01-28,CUST003,Tech Solutions Ltd,WH001,"9617 Main St, City",Suburbs,2026-02-11,Cancelled
+SO,000419,2026-01-28,CUST002,XYZ Industries,WH001,"2267 Main St, City",Central,2026-02-09,Cancelled
+SO,000420,2026-01-28,CUST009,Metro Logistics,WH001,"7913 Main St, City",East,2026-02-04,Delivered
+SO,000421,2026-01-28,CUST004,BuildRight Construction,WH003,"5167 Main St, City",West,2026-02-07,Delivered
+SO,000422,2026-01-28,CUST004,BuildRight Construction,WH002,"4081 Main St, City",East,2026-02-07,Delivered
+SO,000423,2026-01-29,CUST006,Office Pro Services,WH002,"1381 Main St, City",North,2026-02-10,Delivered
+SO,000424,2026-01-29,CUST010,Quality Assurance Ltd,WH003,"3292 Main St, City",Suburbs,2026-02-12,Delivered
+SO,000425,2026-01-29,CUST008,Green Energy Co,WH003,"7490 Main St, City",South,2026-02-05,Delivered
+SO,000426,2026-01-30,CUST003,Tech Solutions Ltd,WH003,"2122 Main St, City",Downtown,2026-02-04,Delivered
+SO,000427,2026-01-30,CUST010,Quality Assurance Ltd,WH002,"685 Main St, City",East,2026-02-13,Delivered
+SO,000428,2026-01-30,CUST007,Industrial Systems Inc,WH002,"4247 Main St, City",West,2026-02-08,Cancelled
+SO,000429,2026-01-31,CUST010,Quality Assurance Ltd,WH001,"9844 Main St, City",North,2026-02-07,Delivered
+SO,000430,2026-01-31,CUST008,Green Energy Co,WH002,"968 Main St, City",Suburbs,2026-02-06,Delivered
+SO,000431,2026-01-31,CUST010,Quality Assurance Ltd,WH001,"871 Main St, City",East,2026-02-01,Cancelled
+SO,000432,2026-01-31,CUST009,Metro Logistics,WH002,"1412 Main St, City",Downtown,2026-02-03,Cancelled
+SO,000433,2026-01-31,CUST001,ABC Manufacturing,WH003,"424 Main St, City",West,2026-02-02,Delivered
+SO,000434,2026-01-31,CUST002,XYZ Industries,WH003,"1654 Main St, City",Downtown,2026-02-01,Cancelled
+SO,000435,2026-02-01,CUST004,BuildRight Construction,WH002,"2385 Main St, City",South,2026-02-06,Delivered
+SO,000436,2026-02-01,CUST006,Office Pro Services,WH001,"1535 Main St, City",North,2026-02-14,Cancelled
+SO,000437,2026-02-01,CUST006,Office Pro Services,WH002,"2099 Main St, City",West,2026-02-03,Delivered
+SO,000438,2026-02-01,CUST006,Office Pro Services,WH003,"338 Main St, City",North,2026-02-14,Cancelled
+SO,000439,2026-02-01,CUST006,Office Pro Services,WH002,"363 Main St, City",East,2026-02-08,Delivered
+SO,000440,2026-02-01,CUST010,Quality Assurance Ltd,WH003,"3543 Main St, City",East,2026-02-07,Delivered
+SO,000441,2026-02-01,CUST007,Industrial Systems Inc,WH001,"6493 Main St, City",North,2026-02-08,Delivered
+SO,000442,2026-02-01,CUST003,Tech Solutions Ltd,WH003,"3280 Main St, City",Downtown,2026-02-10,Delivered
+SO,000443,2026-02-02,CUST004,BuildRight Construction,WH002,"8902 Main St, City",Downtown,2026-02-04,Delivered
+SO,000444,2026-02-02,CUST001,ABC Manufacturing,WH001,"2001 Main St, City",North,2026-02-16,Delivered
+SO,000445,2026-02-02,CUST004,BuildRight Construction,WH002,"4656 Main St, City",Suburbs,2026-02-04,Delivered
+SO,000446,2026-02-02,CUST002,XYZ Industries,WH003,"6110 Main St, City",West,2026-02-13,Delivered
+SO,000447,2026-02-02,CUST006,Office Pro Services,WH002,"9418 Main St, City",West,2026-02-10,Delivered
+SO,000448,2026-02-02,CUST010,Quality Assurance Ltd,WH002,"4916 Main St, City",Suburbs,2026-02-11,Delivered
+SO,000449,2026-02-03,CUST006,Office Pro Services,WH001,"1186 Main St, City",Central,2026-02-09,Delivered
+SO,000450,2026-02-03,CUST007,Industrial Systems Inc,WH001,"2407 Main St, City",Central,2026-02-14,Delivered
+SO,000451,2026-02-03,CUST007,Industrial Systems Inc,WH003,"1991 Main St, City",East,2026-02-17,Delivered
+SO,000452,2026-02-04,CUST006,Office Pro Services,WH001,"5833 Main St, City",Downtown,2026-02-17,Delivered
+SO,000453,2026-02-04,CUST006,Office Pro Services,WH002,"2573 Main St, City",Central,2026-02-15,Delivered
+SO,000454,2026-02-04,CUST006,Office Pro Services,WH001,"2607 Main St, City",South,2026-02-14,Delivered
+SO,000455,2026-02-04,CUST010,Quality Assurance Ltd,WH001,"9144 Main St, City",Suburbs,2026-02-12,Cancelled
+SO,000456,2026-02-05,CUST006,Office Pro Services,WH002,"282 Main St, City",East,2026-02-11,Delivered
+SO,000457,2026-02-05,CUST008,Green Energy Co,WH003,"6385 Main St, City",North,2026-02-12,Delivered
+SO,000458,2026-02-05,CUST006,Office Pro Services,WH002,"2513 Main St, City",Suburbs,2026-02-07,Delivered
+SO,000459,2026-02-05,CUST001,ABC Manufacturing,WH003,"114 Main St, City",North,2026-02-08,Delivered
+SO,000460,2026-02-05,CUST003,Tech Solutions Ltd,WH002,"5497 Main St, City",East,2026-02-11,Cancelled
+SO,000461,2026-02-05,CUST004,BuildRight Construction,WH002,"4809 Main St, City",Central,2026-02-18,Shipped
+SO,000462,2026-02-05,CUST007,Industrial Systems Inc,WH003,"8201 Main St, City",East,2026-02-09,Cancelled
+SO,000463,2026-02-06,CUST001,ABC Manufacturing,WH003,"5370 Main St, City",Downtown,2026-02-08,Delivered
+SO,000464,2026-02-06,CUST007,Industrial Systems Inc,WH002,"4227 Main St, City",North,2026-02-20,Shipped
+SO,000465,2026-02-06,CUST005,SafeWork Corp,WH001,"6862 Main St, City",Central,2026-02-09,Delivered
+SO,000466,2026-02-06,CUST008,Green Energy Co,WH003,"2316 Main St, City",North,2026-02-09,Delivered
+SO,000467,2026-02-06,CUST004,BuildRight Construction,WH001,"2032 Main St, City",Downtown,2026-02-09,Delivered
+SO,000468,2026-02-07,CUST002,XYZ Industries,WH003,"5541 Main St, City",West,2026-02-09,Delivered
+SO,000469,2026-02-07,CUST003,Tech Solutions Ltd,WH002,"6609 Main St, City",Downtown,2026-02-15,Cancelled
+SO,000470,2026-02-07,CUST003,Tech Solutions Ltd,WH001,"8977 Main St, City",East,2026-02-16,Cancelled
+SO,000471,2026-02-07,CUST002,XYZ Industries,WH002,"4047 Main St, City",Central,2026-02-08,Delivered
+SO,000472,2026-02-07,CUST002,XYZ Industries,WH001,"3963 Main St, City",Downtown,2026-02-12,Delivered
+SO,000473,2026-02-07,CUST002,XYZ Industries,WH001,"8686 Main St, City",West,2026-02-13,Cancelled
+SO,000474,2026-02-07,CUST001,ABC Manufacturing,WH002,"8962 Main St, City",Central,2026-02-19,Shipped
+SO,000475,2026-02-08,CUST010,Quality Assurance Ltd,WH003,"2433 Main St, City",South,2026-02-21,Shipped
+SO,000476,2026-02-08,CUST008,Green Energy Co,WH003,"9422 Main St, City",East,2026-02-13,Delivered
+SO,000477,2026-02-08,CUST004,BuildRight Construction,WH002,"4711 Main St, City",West,2026-02-15,Delivered
+SO,000478,2026-02-08,CUST004,BuildRight Construction,WH003,"3409 Main St, City",West,2026-02-19,Shipped
+SO,000479,2026-02-08,CUST005,SafeWork Corp,WH001,"6432 Main St, City",West,2026-02-12,Delivered
+SO,000480,2026-02-08,CUST004,BuildRight Construction,WH001,"379 Main St, City",West,2026-02-21,Shipped
+SO,000481,2026-02-08,CUST007,Industrial Systems Inc,WH003,"9916 Main St, City",North,2026-02-21,Shipped
+SO,000482,2026-02-09,CUST006,Office Pro Services,WH003,"8738 Main St, City",South,2026-02-19,Shipped
+SO,000483,2026-02-09,CUST009,Metro Logistics,WH001,"7749 Main St, City",West,2026-02-21,Shipped
+SO,000484,2026-02-09,CUST007,Industrial Systems Inc,WH001,"5154 Main St, City",East,2026-02-23,Shipped
+SO,000485,2026-02-09,CUST002,XYZ Industries,WH003,"4620 Main St, City",West,2026-02-21,Shipped
+SO,000486,2026-02-09,CUST006,Office Pro Services,WH003,"9252 Main St, City",South,2026-02-14,Delivered
+SO,000487,2026-02-10,CUST008,Green Energy Co,WH001,"9491 Main St, City",Downtown,2026-02-23,Shipped
+SO,000488,2026-02-10,CUST005,SafeWork Corp,WH003,"4873 Main St, City",East,2026-02-23,Shipped
+SO,000489,2026-02-10,CUST006,Office Pro Services,WH003,"818 Main St, City",Suburbs,2026-02-12,Delivered
+SO,000490,2026-02-10,CUST001,ABC Manufacturing,WH001,"3667 Main St, City",Central,2026-02-19,Shipped
+SO,000491,2026-02-10,CUST007,Industrial Systems Inc,WH001,"3053 Main St, City",East,2026-02-17,Delivered
+SO,000492,2026-02-10,CUST003,Tech Solutions Ltd,WH003,"8138 Main St, City",South,2026-02-11,Delivered
+SO,000493,2026-02-10,CUST010,Quality Assurance Ltd,WH003,"6252 Main St, City",East,2026-02-16,Cancelled
+SO,000494,2026-02-11,CUST009,Metro Logistics,WH002,"3953 Main St, City",Central,2026-02-14,Delivered
+SO,000495,2026-02-11,CUST009,Metro Logistics,WH003,"1839 Main St, City",Central,2026-02-14,Cancelled
+SO,000496,2026-02-11,CUST009,Metro Logistics,WH002,"6920 Main St, City",East,2026-02-21,Shipped
+SO,000497,2026-02-11,CUST003,Tech Solutions Ltd,WH002,"8819 Main St, City",Suburbs,2026-02-23,Shipped
+SO,000498,2026-02-11,CUST007,Industrial Systems Inc,WH003,"6422 Main St, City",North,2026-02-12,Cancelled
+SO,000499,2026-02-11,CUST010,Quality Assurance Ltd,WH003,"2469 Main St, City",Downtown,2026-02-21,Shipped
+SO,000500,2026-02-11,CUST003,Tech Solutions Ltd,WH002,"513 Main St, City",West,2026-02-23,Shipped
+SO,000501,2026-02-12,CUST007,Industrial Systems Inc,WH003,"4413 Main St, City",East,2026-02-21,Shipped
+SO,000502,2026-02-12,CUST006,Office Pro Services,WH001,"7968 Main St, City",Suburbs,2026-02-25,Shipped
+SO,000503,2026-02-12,CUST005,SafeWork Corp,WH001,"122 Main St, City",East,2026-02-21,Shipped
+SO,000504,2026-02-12,CUST009,Metro Logistics,WH001,"8122 Main St, City",North,2026-02-26,Shipped
+SO,000505,2026-02-13,CUST010,Quality Assurance Ltd,WH003,"7261 Main St, City",Suburbs,2026-02-17,Processing
+SO,000506,2026-02-13,CUST006,Office Pro Services,WH003,"7833 Main St, City",Suburbs,2026-02-27,Shipped
+SO,000507,2026-02-13,CUST001,ABC Manufacturing,WH003,"1516 Main St, City",Central,2026-02-27,Shipped
+SO,000508,2026-02-13,CUST007,Industrial Systems Inc,WH003,"9284 Main St, City",North,2026-02-14,Shipped
+SO,000509,2026-02-13,CUST009,Metro Logistics,WH001,"4321 Main St, City",Downtown,2026-02-21,Shipped
+SO,000510,2026-02-13,CUST005,SafeWork Corp,WH003,"6853 Main St, City",East,2026-02-18,Shipped
+SO,000511,2026-02-13,CUST005,SafeWork Corp,WH002,"1640 Main St, City",North,2026-02-26,Shipped
+SO,000512,2026-02-14,CUST010,Quality Assurance Ltd,WH002,"8723 Main St, City",Central,2026-02-26,Processing
+SO,000513,2026-02-14,CUST001,ABC Manufacturing,WH003,"7581 Main St, City",West,2026-02-22,Shipped
+SO,000514,2026-02-14,CUST009,Metro Logistics,WH002,"3827 Main St, City",Suburbs,2026-02-20,Shipped
+SO,000515,2026-02-14,CUST003,Tech Solutions Ltd,WH001,"3651 Main St, City",Downtown,2026-02-26,Processing
+SO,000516,2026-02-14,CUST003,Tech Solutions Ltd,WH001,"5891 Main St, City",North,2026-02-26,Processing
+SO,000517,2026-02-14,CUST005,SafeWork Corp,WH002,"9185 Main St, City",West,2026-02-22,Processing
+SO,000518,2026-02-15,CUST009,Metro Logistics,WH003,"2319 Main St, City",South,2026-02-19,Shipped
+SO,000519,2026-02-15,CUST007,Industrial Systems Inc,WH002,"4648 Main St, City",Suburbs,2026-02-17,Processing
+SO,000520,2026-02-15,CUST006,Office Pro Services,WH002,"3386 Main St, City",Central,2026-02-16,Processing
+SO,000521,2026-02-15,CUST006,Office Pro Services,WH001,"7595 Main St, City",East,2026-03-01,Shipped
+SO,000522,2026-02-15,CUST006,Office Pro Services,WH003,"9552 Main St, City",East,2026-02-25,Shipped
+SO,000523,2026-02-16,CUST005,SafeWork Corp,WH002,"338 Main St, City",South,2026-02-23,Pending
+SO,000524,2026-02-16,CUST003,Tech Solutions Ltd,WH001,"2055 Main St, City",Downtown,2026-02-28,Pending
+SO,000525,2026-02-16,CUST010,Quality Assurance Ltd,WH002,"6088 Main St, City",Downtown,2026-02-27,Pending
+SO,000526,2026-02-16,CUST002,XYZ Industries,WH001,"2654 Main St, City",Suburbs,2026-02-25,Pending
+SO,000527,2026-02-16,CUST006,Office Pro Services,WH001,"867 Main St, City",South,2026-02-24,Pending
+SO,000528,2026-02-16,CUST009,Metro Logistics,WH002,"3902 Main St, City",North,2026-02-27,Pending
+SO,000529,2026-02-16,CUST010,Quality Assurance Ltd,WH003,"5322 Main St, City",East,2026-02-21,Pending
+SO,000530,2026-02-16,CUST010,Quality Assurance Ltd,WH003,"6923 Main St, City",Suburbs,2026-02-20,Pending

@@ -1,0 +1,151 @@
+product_code,product_name,product_group,unit_cost,unit_price,supplier_code,supplier_name,created_date,updated_date
+PROD0001,Packaging Item 1,Packaging,353.53,679.21,SUP006,Chemical Solutions,2025-04-21,2025-04-24
+PROD0002,Chemicals Item 2,Chemicals,407.58,969.84,SUP002,Industrial Parts Co,2025-05-27,2025-07-06
+PROD0003,Electronics Item 3,Electronics,342.5,744.36,SUP002,Industrial Parts Co,2025-10-08,2025-10-24
+PROD0004,Electronics Item 4,Electronics,184.53,300.85,SUP003,Global Electronics,2025-07-16,2025-08-06
+PROD0005,Electronics Item 5,Electronics,427.63,524.88,SUP002,Industrial Parts Co,2025-07-22,2025-07-30
+PROD0006,Safety Equipment Item 6,Safety Equipment,449.08,995.1,SUP007,Hardware Wholesale,2025-07-09,2025-09-05
+PROD0007,Chemicals Item 7,Chemicals,183.15,248.16,SUP007,Hardware Wholesale,2025-08-25,2025-10-02
+PROD0008,Industrial Parts Item 8,Industrial Parts,398.14,732.12,SUP001,TechSupply Inc,2025-10-06,2025-10-29
+PROD0009,Safety Equipment Item 9,Safety Equipment,12.17,20.71,SUP003,Global Electronics,2025-06-27,2025-07-23
+PROD0010,Packaging Item 10,Packaging,209.38,269.5,SUP005,Office Depot Pro,2025-12-12,2025-12-21
+PROD0011,Chemicals Item 11,Chemicals,52.78,113.83,SUP006,Chemical Solutions,2025-12-07,2025-12-25
+PROD0012,Office Supplies Item 12,Office Supplies,438.37,610.72,SUP007,Hardware Wholesale,2025-09-08,2025-09-28
+PROD0013,Hardware Item 13,Hardware,316.59,743.44,SUP007,Hardware Wholesale,2025-03-07,2025-04-15
+PROD0014,Electronics Item 14,Electronics,130.45,252.21,SUP003,Global Electronics,2025-03-04,2025-04-22
+PROD0015,Office Supplies Item 15,Office Supplies,329.93,588.05,SUP004,Safety First Ltd,2025-06-16,2025-08-12
+PROD0016,Office Supplies Item 16,Office Supplies,301.65,500.65,SUP008,Packaging Masters,2025-07-10,2025-08-21
+PROD0017,Packaging Item 17,Packaging,464.83,1132.81,SUP002,Industrial Parts Co,2025-10-01,2025-11-13
+PROD0018,Chemicals Item 18,Chemicals,251.37,554.02,SUP006,Chemical Solutions,2025-06-19,2025-07-02
+PROD0019,Electronics Item 19,Electronics,144.7,308.52,SUP001,TechSupply Inc,2025-10-20,2025-12-17
+PROD0020,Tools Item 20,Tools,386.3,925.09,SUP001,TechSupply Inc,2025-10-13,2025-12-06
+PROD0021,Industrial Parts Item 21,Industrial Parts,182.9,387.18,SUP003,Global Electronics,2025-08-15,2025-09-19
+PROD0022,Chemicals Item 22,Chemicals,208.98,413.99,SUP006,Chemical Solutions,2025-04-16,2025-05-29
+PROD0023,Safety Equipment Item 23,Safety Equipment,105.96,247.17,SUP002,Industrial Parts Co,2025-11-28,2025-12-22
+PROD0024,Safety Equipment Item 24,Safety Equipment,161.65,243.91,SUP006,Chemical Solutions,2025-03-21,2025-03-30
+PROD0025,Chemicals Item 25,Chemicals,85.33,201.25,SUP006,Chemical Solutions,2025-03-02,2025-03-22
+PROD0026,Packaging Item 26,Packaging,202.24,252.68,SUP003,Global Electronics,2025-08-07,2025-08-16
+PROD0027,Packaging Item 27,Packaging,147.67,313.91,SUP005,Office Depot Pro,2025-11-07,2025-11-13
+PROD0028,Packaging Item 28,Packaging,396.58,516.03,SUP001,TechSupply Inc,2025-07-02,2025-08-08
+PROD0029,Hardware Item 29,Hardware,163.45,349.7,SUP002,Industrial Parts Co,2025-04-23,2025-06-01
+PROD0030,Office Supplies Item 30,Office Supplies,435.65,998.86,SUP007,Hardware Wholesale,2025-08-16,2025-09-20
+PROD0031,Packaging Item 31,Packaging,416.39,771.6,SUP003,Global Electronics,2025-03-23,2025-03-29
+PROD0032,Hardware Item 32,Hardware,337.82,553.09,SUP001,TechSupply Inc,2025-02-23,2025-04-09
+PROD0033,Industrial Parts Item 33,Industrial Parts,99.07,187.99,SUP004,Safety First Ltd,2025-07-22,2025-09-11
+PROD0034,Industrial Parts Item 34,Industrial Parts,300.31,726.57,SUP006,Chemical Solutions,2025-04-07,2025-04-21
+PROD0035,Packaging Item 35,Packaging,260.32,347.66,SUP002,Industrial Parts Co,2025-12-13,2026-02-05
+PROD0036,Tools Item 36,Tools,77.73,127.05,SUP002,Industrial Parts Co,2025-08-23,2025-08-24
+PROD0037,Tools Item 37,Tools,498.87,1012.52,SUP008,Packaging Masters,2025-04-09,2025-04-13
+PROD0038,Hardware Item 38,Hardware,340.21,466.02,SUP006,Chemical Solutions,2025-10-04,2025-11-27
+PROD0039,Packaging Item 39,Packaging,404.71,643.21,SUP004,Safety First Ltd,2025-07-23,2025-09-16
+PROD0040,Industrial Parts Item 40,Industrial Parts,12.69,22.67,SUP002,Industrial Parts Co,2025-09-29,2025-11-19
+PROD0041,Safety Equipment Item 41,Safety Equipment,268.67,657.99,SUP002,Industrial Parts Co,2025-05-13,2025-05-30
+PROD0042,Hardware Item 42,Hardware,296.94,490.49,SUP004,Safety First Ltd,2025-11-27,2026-01-06
+PROD0043,Electronics Item 43,Electronics,22.04,44.75,SUP006,Chemical Solutions,2025-09-19,2025-10-31
+PROD0044,Safety Equipment Item 44,Safety Equipment,334.75,793.98,SUP005,Office Depot Pro,2025-05-24,2025-07-03
+PROD0045,Hardware Item 45,Hardware,10.92,14.76,SUP006,Chemical Solutions,2025-04-17,2025-05-03
+PROD0046,Packaging Item 46,Packaging,182.21,322.6,SUP006,Chemical Solutions,2025-05-24,2025-06-20
+PROD0047,Tools Item 47,Tools,120.07,292.64,SUP008,Packaging Masters,2025-09-26,2025-10-10
+PROD0048,Office Supplies Item 48,Office Supplies,381.83,542.47,SUP005,Office Depot Pro,2025-08-29,2025-08-31
+PROD0049,Packaging Item 49,Packaging,188.21,233.43,SUP001,TechSupply Inc,2025-12-06,2025-12-19
+PROD0050,Chemicals Item 50,Chemicals,424.58,685.14,SUP002,Industrial Parts Co,2025-04-13,2025-05-10
+PROD0051,Packaging Item 51,Packaging,365.9,554.73,SUP003,Global Electronics,2025-05-09,2025-05-24
+PROD0052,Safety Equipment Item 52,Safety Equipment,334.36,607.53,SUP006,Chemical Solutions,2025-03-15,2025-05-09
+PROD0053,Chemicals Item 53,Chemicals,376.84,632.95,SUP005,Office Depot Pro,2025-09-23,2025-11-17
+PROD0054,Office Supplies Item 54,Office Supplies,486.7,1175.01,SUP005,Office Depot Pro,2025-04-02,2025-05-03
+PROD0055,Hardware Item 55,Hardware,216.59,537.86,SUP005,Office Depot Pro,2025-05-05,2025-05-14
+PROD0056,Safety Equipment Item 56,Safety Equipment,478.3,625.02,SUP001,TechSupply Inc,2025-04-26,2025-06-02
+PROD0057,Electronics Item 57,Electronics,167.99,299.94,SUP004,Safety First Ltd,2025-08-08,2025-10-05
+PROD0058,Office Supplies Item 58,Office Supplies,241.61,538.92,SUP003,Global Electronics,2025-03-15,2025-04-07
+PROD0059,Chemicals Item 59,Chemicals,403.69,839.19,SUP006,Chemical Solutions,2025-02-23,2025-03-12
+PROD0060,Packaging Item 60,Packaging,33.97,72.36,SUP005,Office Depot Pro,2025-07-17,2025-07-31
+PROD0061,Electronics Item 61,Electronics,281.47,436.02,SUP004,Safety First Ltd,2025-07-18,2025-08-20
+PROD0062,Tools Item 62,Tools,189.33,242.09,SUP002,Industrial Parts Co,2025-03-20,2025-03-24
+PROD0063,Office Supplies Item 63,Office Supplies,298.65,634.93,SUP008,Packaging Masters,2025-11-12,2025-11-20
+PROD0064,Tools Item 64,Tools,249.91,536.5,SUP005,Office Depot Pro,2025-07-25,2025-08-04
+PROD0065,Electronics Item 65,Electronics,388.15,576.87,SUP001,TechSupply Inc,2025-11-27,2025-12-28
+PROD0066,Safety Equipment Item 66,Safety Equipment,12.81,16.1,SUP006,Chemical Solutions,2025-04-10,2025-04-18
+PROD0067,Tools Item 67,Tools,283.7,477.77,SUP008,Packaging Masters,2025-03-09,2025-04-13
+PROD0068,Packaging Item 68,Packaging,335.87,582.64,SUP003,Global Electronics,2025-03-04,2025-04-28
+PROD0069,Safety Equipment Item 69,Safety Equipment,260.82,550.47,SUP007,Hardware Wholesale,2025-04-29,2025-05-04
+PROD0070,Safety Equipment Item 70,Safety Equipment,331.65,415.85,SUP008,Packaging Masters,2025-03-26,2025-05-07
+PROD0071,Office Supplies Item 71,Office Supplies,431.97,1073.21,SUP004,Safety First Ltd,2025-05-27,2025-06-13
+PROD0072,Hardware Item 72,Hardware,115.87,238.49,SUP004,Safety First Ltd,2025-03-22,2025-05-19
+PROD0073,Tools Item 73,Tools,56.7,134.24,SUP006,Chemical Solutions,2025-11-14,2026-01-02
+PROD0074,Safety Equipment Item 74,Safety Equipment,222.36,407.43,SUP005,Office Depot Pro,2025-08-30,2025-10-28
+PROD0075,Packaging Item 75,Packaging,271.69,528.39,SUP001,TechSupply Inc,2025-07-27,2025-09-09
+PROD0076,Office Supplies Item 76,Office Supplies,207.57,383.86,SUP008,Packaging Masters,2025-09-02,2025-09-30
+PROD0077,Electronics Item 77,Electronics,144.43,290.82,SUP007,Hardware Wholesale,2025-11-12,2025-12-31
+PROD0078,Office Supplies Item 78,Office Supplies,144.46,289.07,SUP006,Chemical Solutions,2025-06-08,2025-06-25
+PROD0079,Chemicals Item 79,Chemicals,488.22,694.16,SUP003,Global Electronics,2025-05-22,2025-06-09
+PROD0080,Chemicals Item 80,Chemicals,239.19,539.45,SUP001,TechSupply Inc,2025-08-23,2025-09-02
+PROD0081,Safety Equipment Item 81,Safety Equipment,362.35,790.13,SUP007,Hardware Wholesale,2025-06-06,2025-07-30
+PROD0082,Chemicals Item 82,Chemicals,368.39,708.51,SUP005,Office Depot Pro,2025-07-28,2025-09-17
+PROD0083,Hardware Item 83,Hardware,241.44,457.19,SUP008,Packaging Masters,2025-09-16,2025-11-08
+PROD0084,Tools Item 84,Tools,442.69,541.21,SUP002,Industrial Parts Co,2025-12-07,2025-12-13
+PROD0085,Office Supplies Item 85,Office Supplies,488.09,1122.47,SUP001,TechSupply Inc,2025-07-27,2025-09-04
+PROD0086,Electronics Item 86,Electronics,164.89,261.04,SUP002,Industrial Parts Co,2025-02-23,2025-04-16
+PROD0087,Hardware Item 87,Hardware,231.53,467.36,SUP001,TechSupply Inc,2025-10-05,2025-11-01
+PROD0088,Chemicals Item 88,Chemicals,17.64,36.78,SUP004,Safety First Ltd,2025-12-04,2025-12-07
+PROD0089,Electronics Item 89,Electronics,492.91,835.55,SUP004,Safety First Ltd,2025-05-07,2025-06-05
+PROD0090,Hardware Item 90,Hardware,432.38,625.57,SUP004,Safety First Ltd,2025-06-28,2025-08-06
+PROD0091,Office Supplies Item 91,Office Supplies,80.83,201.4,SUP001,TechSupply Inc,2025-03-30,2025-05-04
+PROD0092,Tools Item 92,Tools,88.24,158.31,SUP007,Hardware Wholesale,2025-05-10,2025-05-14
+PROD0093,Packaging Item 93,Packaging,378.04,696.91,SUP003,Global Electronics,2025-07-04,2025-09-02
+PROD0094,Tools Item 94,Tools,206.27,279.93,SUP005,Office Depot Pro,2025-02-25,2025-03-18
+PROD0095,Office Supplies Item 95,Office Supplies,441.11,959.62,SUP001,TechSupply Inc,2025-08-23,2025-09-26
+PROD0096,Packaging Item 96,Packaging,328.23,787.32,SUP004,Safety First Ltd,2025-09-12,2025-11-02
+PROD0097,Packaging Item 97,Packaging,202.61,307.87,SUP008,Packaging Masters,2025-03-13,2025-04-19
+PROD0098,Tools Item 98,Tools,207.57,441.85,SUP008,Packaging Masters,2025-05-04,2025-05-25
+PROD0099,Tools Item 99,Tools,422.61,1018.85,SUP004,Safety First Ltd,2025-11-27,2025-12-01
+PROD0100,Packaging Item 100,Packaging,23.18,57.93,SUP007,Hardware Wholesale,2025-10-27,2025-10-27
+PROD0101,Packaging Item 101,Packaging,226.69,414.33,SUP003,Global Electronics,2025-09-30,2025-11-02
+PROD0102,Hardware Item 102,Hardware,327.97,566.16,SUP006,Chemical Solutions,2025-06-28,2025-07-28
+PROD0103,Tools Item 103,Tools,430.49,975.39,SUP003,Global Electronics,2025-06-01,2025-06-27
+PROD0104,Tools Item 104,Tools,127.68,157.23,SUP008,Packaging Masters,2025-08-23,2025-09-03
+PROD0105,Safety Equipment Item 105,Safety Equipment,413.39,737.99,SUP004,Safety First Ltd,2025-05-08,2025-06-13
+PROD0106,Safety Equipment Item 106,Safety Equipment,428.04,834.68,SUP008,Packaging Masters,2025-04-27,2025-06-20
+PROD0107,Industrial Parts Item 107,Industrial Parts,375.25,568.83,SUP005,Office Depot Pro,2025-10-04,2025-10-04
+PROD0108,Safety Equipment Item 108,Safety Equipment,186.56,462.28,SUP007,Hardware Wholesale,2025-04-29,2025-06-11
+PROD0109,Electronics Item 109,Electronics,19.83,39.5,SUP003,Global Electronics,2025-10-29,2025-11-30
+PROD0110,Tools Item 110,Tools,319.08,424.15,SUP006,Chemical Solutions,2025-11-09,2025-11-23
+PROD0111,Tools Item 111,Tools,112.46,276.72,SUP005,Office Depot Pro,2025-08-08,2025-09-30
+PROD0112,Safety Equipment Item 112,Safety Equipment,11.28,27.56,SUP004,Safety First Ltd,2025-06-05,2025-06-16
+PROD0113,Safety Equipment Item 113,Safety Equipment,286.79,423.21,SUP007,Hardware Wholesale,2025-10-25,2025-12-08
+PROD0114,Packaging Item 114,Packaging,329.56,808.26,SUP002,Industrial Parts Co,2025-10-01,2025-11-07
+PROD0115,Safety Equipment Item 115,Safety Equipment,6.7,13.17,SUP002,Industrial Parts Co,2025-11-01,2025-11-02
+PROD0116,Packaging Item 116,Packaging,139.62,177.76,SUP008,Packaging Masters,2025-07-31,2025-09-05
+PROD0117,Industrial Parts Item 117,Industrial Parts,180.41,224.96,SUP004,Safety First Ltd,2025-04-09,2025-04-24
+PROD0118,Electronics Item 118,Electronics,5.31,13.0,SUP008,Packaging Masters,2025-12-04,2026-01-23
+PROD0119,Industrial Parts Item 119,Industrial Parts,498.1,915.81,SUP001,TechSupply Inc,2025-06-21,2025-07-20
+PROD0120,Safety Equipment Item 120,Safety Equipment,50.36,124.85,SUP001,TechSupply Inc,2025-07-12,2025-07-16
+PROD0121,Safety Equipment Item 121,Safety Equipment,375.78,611.07,SUP004,Safety First Ltd,2025-07-20,2025-08-10
+PROD0122,Industrial Parts Item 122,Industrial Parts,463.39,1079.44,SUP007,Hardware Wholesale,2025-06-27,2025-07-26
+PROD0123,Packaging Item 123,Packaging,337.01,782.18,SUP006,Chemical Solutions,2025-03-20,2025-04-22
+PROD0124,Office Supplies Item 124,Office Supplies,49.34,112.97,SUP006,Chemical Solutions,2025-12-07,2026-01-15
+PROD0125,Safety Equipment Item 125,Safety Equipment,15.07,27.31,SUP003,Global Electronics,2025-04-28,2025-05-25
+PROD0126,Packaging Item 126,Packaging,233.63,453.55,SUP002,Industrial Parts Co,2025-08-29,2025-09-03
+PROD0127,Electronics Item 127,Electronics,313.99,421.9,SUP003,Global Electronics,2025-12-13,2026-01-13
+PROD0128,Electronics Item 128,Electronics,269.61,338.79,SUP008,Packaging Masters,2025-05-12,2025-05-15
+PROD0129,Hardware Item 129,Hardware,236.64,377.3,SUP006,Chemical Solutions,2025-09-07,2025-11-04
+PROD0130,Office Supplies Item 130,Office Supplies,112.15,272.41,SUP007,Hardware Wholesale,2025-03-13,2025-03-31
+PROD0131,Electronics Item 131,Electronics,258.59,512.27,SUP001,TechSupply Inc,2025-03-23,2025-03-27
+PROD0132,Office Supplies Item 132,Office Supplies,330.99,565.62,SUP005,Office Depot Pro,2025-03-11,2025-04-30
+PROD0133,Tools Item 133,Tools,332.86,800.57,SUP005,Office Depot Pro,2025-05-16,2025-07-13
+PROD0134,Packaging Item 134,Packaging,14.57,31.21,SUP004,Safety First Ltd,2025-03-02,2025-04-07
+PROD0135,Electronics Item 135,Electronics,409.56,805.95,SUP004,Safety First Ltd,2025-09-03,2025-10-02
+PROD0136,Hardware Item 136,Hardware,42.67,73.64,SUP008,Packaging Masters,2025-05-09,2025-06-04
+PROD0137,Hardware Item 137,Hardware,419.33,592.35,SUP005,Office Depot Pro,2025-03-18,2025-05-06
+PROD0138,Industrial Parts Item 138,Industrial Parts,439.16,818.63,SUP008,Packaging Masters,2025-05-05,2025-05-15
+PROD0139,Packaging Item 139,Packaging,132.44,193.44,SUP005,Office Depot Pro,2025-07-02,2025-07-04
+PROD0140,Industrial Parts Item 140,Industrial Parts,241.16,568.59,SUP007,Hardware Wholesale,2025-08-24,2025-10-11
+PROD0141,Electronics Item 141,Electronics,427.09,825.78,SUP005,Office Depot Pro,2025-04-23,2025-05-05
+PROD0142,Office Supplies Item 142,Office Supplies,251.53,371.83,SUP004,Safety First Ltd,2025-08-28,2025-09-30
+PROD0143,Electronics Item 143,Electronics,429.88,536.07,SUP001,TechSupply Inc,2025-08-10,2025-08-16
+PROD0144,Office Supplies Item 144,Office Supplies,459.1,1025.18,SUP006,Chemical Solutions,2025-10-21,2025-11-23
+PROD0145,Packaging Item 145,Packaging,127.52,313.21,SUP003,Global Electronics,2025-09-27,2025-10-03
+PROD0146,Safety Equipment Item 146,Safety Equipment,242.88,295.21,SUP008,Packaging Masters,2025-10-23,2025-11-30
+PROD0147,Industrial Parts Item 147,Industrial Parts,384.96,809.7,SUP005,Office Depot Pro,2025-03-08,2025-03-08
+PROD0148,Hardware Item 148,Hardware,99.02,224.77,SUP007,Hardware Wholesale,2025-03-22,2025-04-03
+PROD0149,Chemicals Item 149,Chemicals,202.42,260.6,SUP004,Safety First Ltd,2025-06-24,2025-07-28
+PROD0150,Office Supplies Item 150,Office Supplies,15.52,24.79,SUP005,Office Depot Pro,2025-04-07,2025-04-19
