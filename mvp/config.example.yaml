@@ -1,0 +1,147 @@
+# Supply Chain AI MVP Configuration Template
+# Copy this file to config.yaml and update with your settings
+
+# AWS Configuration
+aws:
+  # AWS region for all services
+  region: us-east-1
+  
+  # Amazon Bedrock configuration
+  bedrock:
+    # Model ID for Claude 3.5 Sonnet
+    model_id: anthropic.claude-3-5-sonnet-20241022-v2:0
+    # Maximum tokens for model responses
+    max_tokens: 4096
+    # Temperature for model responses (0.0 = deterministic)
+    temperature: 0.0
+  
+  # Amazon Redshift Serverless configuration
+  redshift:
+    # Redshift Serverless workgroup name
+    workgroup_name: supply-chain-mvp
+    # Database name
+    database: supply_chain_db
+    # Query timeout in seconds
+    data_api_timeout: 30
+  
+  # AWS Glue Data Catalog configuration
+  glue:
+    # AWS account ID (use ${AWS_ACCOUNT_ID} to read from environment)
+    catalog_id: ${AWS_ACCOUNT_ID}
+    # Glue database name
+    database: supply_chain_catalog
+  
+  # AWS Lambda function configuration
+  lambda:
+    # Inventory optimizer Lambda function name
+    inventory_function: supply-chain-inventory-optimizer
+    # Logistics optimizer Lambda function name
+    logistics_function: supply-chain-logistics-optimizer
+    # Supplier analyzer Lambda function name
+    supplier_function: supply-chain-supplier-analyzer
+
+# Application Configuration
+app:
+  # Application name
+  name: Supply Chain AI Assistant
+  # Application version
+  version: 1.0.0
+  # Session timeout in seconds (1 hour)
+  session_timeout: 3600
+  # Maximum query length in characters
+  max_query_length: 1000
+
+# Query Result Cache Configuration
+cache:
+  # Enable/disable caching
+  enabled: true
+  # Maximum number of cached queries
+  max_size: 1000
+  # Default cache TTL in seconds (5 minutes)
+  default_ttl: 300
+  # Dashboard query cache TTL in seconds (15 minutes)
+  dashboard_ttl: 900
+
+# Conversation Memory Configuration
+conversation:
+  # Maximum number of interactions to store per session
+  max_history: 10
+  # Clear conversation history when user switches persona
+  clear_on_persona_switch: true
+
+# Cost Tracking Configuration
+cost:
+  # Enable/disable cost tracking
+  enabled: true
+  # Cost log file path
+  log_file: logs/cost_tracking.log
+  # Bedrock pricing (per 1000 tokens)
+  bedrock_input_cost_per_1k: 0.003
+  bedrock_output_cost_per_1k: 0.015
+  # Redshift Serverless pricing (per RPU-hour)
+  redshift_rpu_cost_per_hour: 0.36
+  redshift_base_rpus: 8
+  # Lambda pricing (per GB-second)
+  lambda_cost_per_gb_second: 0.0000166667
+
+# Logging Configuration
+logging:
+  # Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  level: INFO
+  # Log file path
+  file: logs/app.log
+  # Maximum log file size in bytes (10MB)
+  max_bytes: 10485760
+  # Number of backup log files to keep
+  backup_count: 5
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  # Date format
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# Authentication Configuration
+auth:
+  # Path to users JSON file
+  users_file: auth/users.json
+  # Session secret key (use ${SESSION_SECRET} to read from environment)
+  # Generate with: python -c "import secrets; print(secrets.token_hex(32))"
+  session_secret: ${SESSION_SECRET}
+  # Minimum password length
+  password_min_length: 8
+  # Bcrypt cost factor (higher = more secure but slower)
+  bcrypt_rounds: 12
+
+# Semantic Layer Configuration
+semantic_layer:
+  # Enable/disable semantic layer
+  enabled: true
+  # Path to business metrics definitions
+  metrics_file: semantic_layer/business_metrics.yaml
+
+# Database Configuration
+database:
+  # Database type (redshift or athena)
+  type: redshift
+  # Enable query result caching at database level
+  enable_result_cache: true
+  # Maximum query execution time in seconds
+  max_execution_time: 60
+
+# UI Configuration
+ui:
+  # Streamlit page title
+  page_title: Supply Chain AI Assistant
+  # Streamlit page icon
+  page_icon: 📦
+  # Streamlit layout (wide or centered)
+  layout: wide
+  # Show conversation history in sidebar
+  show_conversation_history: true
+  # Show cost dashboard in sidebar
+  show_cost_dashboard: true
+  # Show cache statistics in sidebar
+  show_cache_stats: true
+  # Number of rows to display in results table
+  max_result_rows: 100
+  # Enable CSV export
+  enable_csv_export: true

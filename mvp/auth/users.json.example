@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "username": "demo_warehouse",
+      "password_hash": "$2b$12$yAd4lGHoV7SUH2p.T37ys.HcVzMjmTmSz8cV.Z6URmIa/77xoYoWS",
+      "personas": [
+        "Warehouse Manager"
+      ],
+      "active": true,
+      "created_date": "2024-01-01T00:00:00"
+    },
+    {
+      "username": "demo_field",
+      "password_hash": "$2b$12$yAd4lGHoV7SUH2p.T37ys.HcVzMjmTmSz8cV.Z6URmIa/77xoYoWS",
+      "personas": [
+        "Field Engineer"
+      ],
+      "active": true,
+      "created_date": "2024-01-01T00:00:00"
+    },
+    {
+      "username": "demo_procurement",
+      "password_hash": "$2b$12$yAd4lGHoV7SUH2p.T37ys.HcVzMjmTmSz8cV.Z6URmIa/77xoYoWS",
+      "personas": [
+        "Procurement Specialist"
+      ],
+      "active": true,
+      "created_date": "2024-01-01T00:00:00"
+    },
+    {
+      "username": "demo_admin",
+      "password_hash": "$2b$12$yAd4lGHoV7SUH2p.T37ys.HcVzMjmTmSz8cV.Z6URmIa/77xoYoWS",
+      "personas": [
+        "Warehouse Manager",
+        "Field Engineer",
+        "Procurement Specialist"
+      ],
+      "active": true,
+      "created_date": "2024-01-01T00:00:00"
+    }
+  ]
+}

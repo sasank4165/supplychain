@@ -1,0 +1,2 @@
+# Dependencies for Inventory Optimizer Lambda
+boto3>=1.34.0

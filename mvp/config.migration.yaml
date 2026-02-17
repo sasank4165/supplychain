@@ -1,0 +1,134 @@
+# Migration Configuration Example
+# This configuration file is used during the migration from Redshift to Athena
+
+# AWS Configuration
+aws:
+  region: us-east-1
+
+# Database Configuration (MVP - Redshift)
+database:
+  type: redshift  # Change to 'athena' after migration
+  
+  # Redshift Serverless Configuration (MVP)
+  redshift:
+    workgroup_name: supply-chain-mvp
+    database: supply_chain_db
+    data_api_timeout: 30
+  
+  # Athena Configuration (Production)
+  athena:
+    database: supply_chain_athena
+    output_location: s3://your-bucket-name/athena-results/
+    workgroup: supply-chain-production
+    region: us-east-1
+
+# Migration Configuration
+migration:
+  # S3 bucket for data export
+  s3_bucket: your-bucket-name
+  
+  # S3 prefix for exported data
+  s3_prefix: supply-chain-data
+  
+  # IAM role for Redshift UNLOAD
+  iam_role: arn:aws:iam::123456789012:role/RedshiftS3Role
+  
+  # Parallel export (number of concurrent table exports)
+  parallel_exports: 3
+  
+  # Validation options
+  validation:
+    enabled: true
+    sample_queries: true
+    performance_comparison: true
+  
+  # Rollback configuration
+  rollback:
+    keep_redshift_days: 7  # Keep Redshift running for 7 days after cutover
+    backup_s3_prefix: supply-chain-backup
+
+# Glue Configuration
+glue:
+  catalog_id: "123456789012"
+  database: supply_chain_athena
+  
+  # Crawler configuration (optional - for automatic schema discovery)
+  crawlers:
+    enabled: false
+    schedule: "cron(0 2 * * ? *)"  # Daily at 2 AM
+
+# API Gateway Configuration (Phase 2)
+api:
+  enabled: false  # Enable after Phase 2
+  url: https://api.example.com
+  stage: prod
+  throttling:
+    rate_limit: 100
+    burst_limit: 200
+
+# Cognito Configuration (Phase 3)
+cognito:
+  enabled: false  # Enable after Phase 3
+  user_pool_id: us-east-1_XXXXXXXXX
+  client_id: your-client-id
+  region: us-east-1
+
+# ECS Configuration (Phase 4)
+ecs:
+  enabled: false  # Enable after Phase 4
+  cluster: supply-chain-cluster
+  service: streamlit-service
+  task_definition: streamlit-task
+  desired_count: 2
+  min_capacity: 2
+  max_capacity: 10
+
+# ElastiCache Configuration (Phase 5)
+elasticache:
+  enabled: false  # Enable after Phase 5
+  endpoint: supply-chain-cache.xxxxx.0001.use1.cache.amazonaws.com
+  port: 6379
+
+# DynamoDB Configuration (Phase 5)
+dynamodb:
+  enabled: false  # Enable after Phase 5
+  session_table: supply-chain-sessions
+  conversation_table: supply-chain-conversations
+  region: us-east-1
+
+# Monitoring Configuration
+monitoring:
+  cloudwatch:
+    enabled: true
+    log_group: /aws/supply-chain/production
+    retention_days: 30
+  
+  alarms:
+    enabled: false  # Enable after Phase 5
+    sns_topic: arn:aws:sns:us-east-1:123456789012:supply-chain-alarms
+    
+    thresholds:
+      error_rate_percent: 5
+      response_time_seconds: 10
+      daily_cost_dollars: 20
+
+# Cost Tracking
+cost:
+  enabled: true
+  log_file: logs/cost_tracking.log
+  
+  # Pricing (update as needed)
+  pricing:
+    bedrock_input_per_1k: 0.003
+    bedrock_output_per_1k: 0.015
+    redshift_rpu_per_hour: 0.36
+    athena_per_tb_scanned: 5.00
+    lambda_per_gb_second: 0.0000166667
+    api_gateway_per_million: 3.50
+
+# Logging
+logging:
+  level: INFO
+  file: logs/app.log
+  max_bytes: 10485760  # 10MB
+  backup_count: 5

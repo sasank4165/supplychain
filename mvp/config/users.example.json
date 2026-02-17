@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "username": "warehouse_user",
+      "password_hash": "$2b$12$example_hash_will_be_generated_by_create_user_script",
+      "personas": ["Warehouse Manager"],
+      "active": true,
+      "created_date": "2026-02-17T00:00:00"
+    },
+    {
+      "username": "field_user",
+      "password_hash": "$2b$12$example_hash_will_be_generated_by_create_user_script",
+      "personas": ["Field Engineer"],
+      "active": true,
+      "created_date": "2026-02-17T00:00:00"
+    },
+    {
+      "username": "procurement_user",
+      "password_hash": "$2b$12$example_hash_will_be_generated_by_create_user_script",
+      "personas": ["Procurement Specialist"],
+      "active": true,
+      "created_date": "2026-02-17T00:00:00"
+    },
+    {
+      "username": "admin_user",
+      "password_hash": "$2b$12$example_hash_will_be_generated_by_create_user_script",
+      "personas": ["Warehouse Manager", "Field Engineer", "Procurement Specialist"],
+      "active": true,
+      "created_date": "2026-02-17T00:00:00"
+    }
+  ]
+}
