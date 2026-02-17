@@ -80,9 +80,14 @@ aws:
   glue:
     catalog_id: ${AWS_ACCOUNT_ID}  # Auto-detected from AWS credentials
     database: supply_chain_catalog
+auth:
+  session_secret: ${SESSION_SECRET}  # Auto-generated secure random key
 ```
 
-**Note**: The `${AWS_ACCOUNT_ID}` will be automatically detected from your AWS credentials. You don't need to hardcode it!
+**Note**: Both `${AWS_ACCOUNT_ID}` and `${SESSION_SECRET}` are automatically handled:
+- AWS Account ID is auto-detected from your AWS credentials
+- Session secret is auto-generated (cryptographically secure)
+- No hardcoding needed!
 
 4. Save and exit (Ctrl+X, Y, Enter)
 

@@ -63,8 +63,30 @@ def main():
         print(f"✗ Error checking account ID: {e}")
         sys.exit(1)
     
-    # Test 4: Display key configuration values
-    print("\nTest 4: Key Configuration Values")
+    # Test 4: Check session secret
+    print("\nTest 4: Checking session secret...")
+    try:
+        auth_config = config.get_auth_config()
+        session_secret = auth_config.get('session_secret')
+        
+        if session_secret:
+            print(f"✓ Session secret generated: {session_secret[:16]}... (truncated)")
+            
+            # Verify it's a valid hex string of appropriate length
+            if len(session_secret) >= 32:
+                print("✓ Session secret length is valid")
+            else:
+                print(f"⚠ Warning: Session secret may be too short: {len(session_secret)} chars")
+        else:
+            print("✗ Session secret not found in configuration")
+            sys.exit(1)
+            
+    except Exception as e:
+        print(f"✗ Error checking session secret: {e}")
+        sys.exit(1)
+    
+    # Test 5: Display key configuration values
+    print("\nTest 5: Key Configuration Values")
     print("-" * 60)
     
     config_items = [

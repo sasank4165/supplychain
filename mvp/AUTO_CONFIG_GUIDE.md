@@ -71,6 +71,7 @@ You can also set the account ID explicitly if needed:
 
 ```bash
 export AWS_ACCOUNT_ID=193871648423
+export SESSION_SECRET=$(python -c "import secrets; print(secrets.token_hex(32))")
 ```
 
 ### Option 2: Hardcode (Not Recommended)
@@ -79,6 +80,8 @@ export AWS_ACCOUNT_ID=193871648423
 aws:
   glue:
     catalog_id: "193871648423"
+auth:
+  session_secret: "your-secret-key-here"
 ```
 
 ## Supported Variables
@@ -88,7 +91,7 @@ The configuration system supports these special variables:
 | Variable | Description | Auto-Detection |
 |----------|-------------|----------------|
 | `${AWS_ACCOUNT_ID}` | AWS Account ID | ✓ Yes (via STS) |
-| `${SESSION_SECRET}` | Session secret key | ✗ No (must be set) |
+| `${SESSION_SECRET}` | Session secret key | ✓ Yes (auto-generated) |
 | `${AWS_REGION}` | AWS Region | ✗ No (must be set) |
 
 ## Default Values
@@ -178,13 +181,18 @@ def _get_aws_account_id(self) -> Optional[str]:
         return identity['Account']
     except Exception:
         return None
+
+def _generate_session_secret(self) -> str:
+    """Generate a secure random session secret."""
+    import secrets
+    return secrets.token_hex(32)
 ```
 
 ## Benefits
 
-1. **No Hardcoding**: Account ID is never hardcoded in config files
+1. **No Hardcoding**: Account ID and session secrets are never hardcoded in config files
 2. **Portable**: Same config works across different AWS accounts
-3. **Secure**: No sensitive data in version control
+3. **Secure**: No sensitive data in version control, session secrets are cryptographically random
 4. **Automatic**: Works out of the box on SageMaker and EC2
 5. **Flexible**: Can still override with environment variables if needed
 
@@ -205,9 +213,10 @@ def _get_aws_account_id(self) -> Optional[str]:
 
 ## Summary
 
-The automatic AWS account ID detection makes setup easier and more secure. You no longer need to:
+The automatic configuration detection makes setup easier and more secure. You no longer need to:
 - Look up your account ID
-- Hardcode it in configuration files
+- Generate session secrets manually
+- Hardcode sensitive values in configuration files
 - Worry about committing sensitive data to git
 
-Just use `${AWS_ACCOUNT_ID}` in your config, and it works automatically!
+Just use `${AWS_ACCOUNT_ID}` and `${SESSION_SECRET}` in your config, and they work automatically!

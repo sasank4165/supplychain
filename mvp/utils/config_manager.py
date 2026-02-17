@@ -113,6 +113,13 @@ class ConfigManager:
                     env_value = self._get_aws_account_id()
                 if env_value is not None:
                     return env_value
+            # Special handling for SESSION_SECRET - auto-generate if not set
+            elif var_name == 'SESSION_SECRET':
+                env_value = os.environ.get(var_name)
+                if env_value is None:
+                    env_value = self._generate_session_secret()
+                if env_value is not None:
+                    return env_value
             else:
                 env_value = os.environ.get(var_name)
                 if env_value is not None:
@@ -142,6 +149,16 @@ class ConfigManager:
         except Exception:
             # Silently fail - will use default value if provided
             return None
+    
+    def _generate_session_secret(self) -> str:
+        """
+        Generate a secure random session secret.
+        
+        Returns:
+            64-character hex string suitable for session encryption
+        """
+        import secrets
+        return secrets.token_hex(32)
     
     def _validate_config(self) -> None:
         """
