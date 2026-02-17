@@ -130,7 +130,7 @@ def initialize_app():
             cost_config = config.get('cost', {})
             cost_tracker = CostTracker(cost_config)
             cost_logger = CostLogger(
-                log_file=cost_config.get('log_file', 'logs/cost_tracking.log'),
+                log_file_path=cost_config.get('log_file', 'logs/cost_tracking.log'),
                 enabled=cost_config.get('enabled', True)
             )
             
