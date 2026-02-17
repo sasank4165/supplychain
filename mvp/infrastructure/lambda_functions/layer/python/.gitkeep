@@ -1,0 +1,2 @@
+# This directory is required for AWS Lambda layers
+# The python/ subdirectory is where Lambda looks for packages

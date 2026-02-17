@@ -133,14 +133,15 @@ class SupplyChainMVPStack(Stack):
             )
         )
 
-        # Lambda Layer for common dependencies
-        lambda_layer = lambda_.LayerVersion(
-            self,
-            "SupplyChainLambdaLayer",
-            code=lambda_.Code.from_asset("../lambda_functions/layer"),
-            compatible_runtimes=[lambda_.Runtime.PYTHON_3_11],
-            description="Common dependencies for Supply Chain Lambda functions"
-        )
+        # Lambda Layer for common dependencies (commented out for MVP simplicity)
+        # Uncomment after building layer with: cd ../lambda_functions/layer && bash build_layer.sh
+        # lambda_layer = lambda_.LayerVersion(
+        #     self,
+        #     "SupplyChainLambdaLayer",
+        #     code=lambda_.Code.from_asset("../lambda_functions/layer"),
+        #     compatible_runtimes=[lambda_.Runtime.PYTHON_3_11],
+        #     description="Common dependencies for Supply Chain Lambda functions"
+        # )
 
         # Lambda Function 1: Inventory Optimizer
         inventory_lambda = lambda_.Function(
@@ -157,8 +158,8 @@ class SupplyChainMVPStack(Stack):
                 "REDSHIFT_WORKGROUP": redshift_workgroup.workgroup_name,
                 "REDSHIFT_DATABASE": "supply_chain_db",
                 "GLUE_DATABASE": glue_database.database_input.name
-            },
-            layers=[lambda_layer]
+            }
+            # layers=[lambda_layer]  # Commented out - Lambda functions include dependencies directly
         )
 
         # Lambda Function 2: Logistics Optimizer
@@ -176,8 +177,8 @@ class SupplyChainMVPStack(Stack):
                 "REDSHIFT_WORKGROUP": redshift_workgroup.workgroup_name,
                 "REDSHIFT_DATABASE": "supply_chain_db",
                 "GLUE_DATABASE": glue_database.database_input.name
-            },
-            layers=[lambda_layer]
+            }
+            # layers=[lambda_layer]  # Commented out - Lambda functions include dependencies directly
         )
 
         # Lambda Function 3: Supplier Analyzer
@@ -195,8 +196,8 @@ class SupplyChainMVPStack(Stack):
                 "REDSHIFT_WORKGROUP": redshift_workgroup.workgroup_name,
                 "REDSHIFT_DATABASE": "supply_chain_db",
                 "GLUE_DATABASE": glue_database.database_input.name
-            },
-            layers=[lambda_layer]
+            }
+            # layers=[lambda_layer]  # Commented out - Lambda functions include dependencies directly
         )
 
         # Outputs
