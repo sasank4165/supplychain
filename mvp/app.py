@@ -75,8 +75,9 @@ def initialize_app():
             
             # Set up logger
             logger = setup_logger(
+                name='supply_chain_ai',
                 log_file=config.get('logging', {}).get('file', 'logs/app.log'),
-                log_level=config.get('logging', {}).get('level', 'INFO')
+                level=config.get('logging', {}).get('level', 'INFO')
             )
             
             # Initialize authentication components
