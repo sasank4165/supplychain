@@ -2,6 +2,12 @@
 
 This guide helps you get the MVP running on SageMaker without CDK complexity.
 
+## Key Features
+
+- **Auto-detection**: AWS Account ID is automatically detected - no hardcoding needed!
+- **Quick Setup Script**: Automated configuration and verification
+- **Manual Setup**: Step-by-step instructions if you prefer manual setup
+
 ## Prerequisites
 
 - SageMaker Notebook Instance running
@@ -31,27 +37,26 @@ This guide helps you get the MVP running on SageMaker without CDK complexity.
    - **Description**: Schema metadata for Supply Chain MVP
 4. Click **Create**
 
-## Step 3: Setup Glue Catalog Tables
+## Step 3: Quick Setup (Automated)
 
-On your SageMaker terminal:
+Run the quick setup script to automate configuration:
 
 ```bash
 cd /home/ec2-user/SageMaker/supplychain/mvp
-python scripts/setup_glue_catalog.py
+python scripts/quick_setup.py
 ```
 
-## Step 4: Generate Sample Data
+This script will:
+- Create `config.yaml` from the example
+- Auto-detect your AWS account ID
+- Verify AWS connectivity
+- Create necessary directories
 
-```bash
-python scripts/generate_sample_data.py
-```
+**OR** do it manually (Step 3a below):
 
-This will:
-- Connect to your Redshift workgroup
-- Create tables (inventory, shipments, suppliers, etc.)
-- Load sample data
+## Step 3a: Configure the Application (Manual)
 
-## Step 5: Configure the Application
+If you prefer to configure manually:
 
 1. Copy the example config:
 ```bash
@@ -63,7 +68,7 @@ cp config.example.yaml config.yaml
 nano config.yaml
 ```
 
-3. Update these values:
+3. Update these values (if needed):
 ```yaml
 aws:
   region: us-east-1  # Your AWS region
@@ -73,11 +78,30 @@ aws:
     workgroup_name: supply-chain-mvp
     database: supply_chain_db
   glue:
-    catalog_id: "193871648423"  # Your AWS account ID
+    catalog_id: ${AWS_ACCOUNT_ID}  # Auto-detected from AWS credentials
     database: supply_chain_catalog
 ```
 
+**Note**: The `${AWS_ACCOUNT_ID}` will be automatically detected from your AWS credentials. You don't need to hardcode it!
+
 4. Save and exit (Ctrl+X, Y, Enter)
+
+## Step 4: Setup Glue Catalog Tables (Optional)
+
+```bash
+python scripts/setup_glue_catalog.py
+```
+
+## Step 5: Generate and Load Sample Data
+
+```bash
+python scripts/generate_sample_data.py --load-redshift --workgroup supply-chain-mvp --database supply_chain_db
+```
+
+This will:
+- Connect to your Redshift workgroup
+- Create tables (inventory, shipments, suppliers, etc.)
+- Load sample data
 
 ## Step 6: Create Users
 

@@ -106,11 +106,19 @@ class ConfigManager:
             var_name = match.group(1)
             default_value = match.group(2)
             
-            env_value = os.environ.get(var_name)
+            # Special handling for AWS_ACCOUNT_ID - auto-detect if not set
+            if var_name == 'AWS_ACCOUNT_ID':
+                env_value = os.environ.get(var_name)
+                if env_value is None:
+                    env_value = self._get_aws_account_id()
+                if env_value is not None:
+                    return env_value
+            else:
+                env_value = os.environ.get(var_name)
+                if env_value is not None:
+                    return env_value
             
-            if env_value is not None:
-                return env_value
-            elif default_value is not None:
+            if default_value is not None:
                 return default_value
             else:
                 raise ConfigError(
@@ -118,6 +126,22 @@ class ConfigManager:
                 )
         
         return re.sub(pattern, replace_var, value)
+    
+    def _get_aws_account_id(self) -> Optional[str]:
+        """
+        Auto-detect AWS account ID using boto3.
+        
+        Returns:
+            AWS account ID or None if detection fails
+        """
+        try:
+            import boto3
+            sts = boto3.client('sts')
+            identity = sts.get_caller_identity()
+            return identity['Account']
+        except Exception:
+            # Silently fail - will use default value if provided
+            return None
     
     def _validate_config(self) -> None:
         """
