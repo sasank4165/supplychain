@@ -136,11 +136,12 @@ def initialize_app():
             
             # Initialize orchestrator components
             intent_classifier = IntentClassifier(bedrock_client, logger)
+            
+            # For MVP, we'll create a simplified agent router without pre-initialized agents
+            # Agents will be created on-demand when needed
             agent_router = AgentRouter(
-                bedrock_client=bedrock_client,
-                redshift_client=redshift_client,
-                lambda_client=lambda_client,
-                glue_client=glue_client,
+                sql_agents={},  # Will be populated on-demand
+                specialized_agents={},  # Will be populated on-demand
                 logger=logger
             )
             
@@ -156,6 +157,10 @@ def initialize_app():
             st.session_state.logger = logger
             st.session_state.auth_manager = auth_manager
             st.session_state.session_manager = session_manager
+            st.session_state.bedrock_client = bedrock_client
+            st.session_state.redshift_client = redshift_client
+            st.session_state.lambda_client = lambda_client
+            st.session_state.glue_client = glue_client
             st.session_state.orchestrator = orchestrator
             st.session_state.cost_tracker = cost_tracker
             st.session_state.cost_logger = cost_logger
