@@ -89,8 +89,15 @@ class RedshiftClient:
             
             execution_time = time.time() - start_time
             
-            # Get query results
-            columns, rows = self._fetch_results(query_id)
+            # Check if query has results (SELECT queries) or not (DDL/DML)
+            has_result_set = result.get('HasResultSet', False)
+            
+            if has_result_set:
+                # Get query results for SELECT queries
+                columns, rows = self._fetch_results(query_id)
+            else:
+                # DDL/DML queries (CREATE, INSERT, UPDATE, DELETE) don't return results
+                columns, rows = [], []
             
             return QueryResult(
                 columns=columns,
@@ -137,7 +144,7 @@ class RedshiftClient:
                 raise RedshiftClientError("Query was aborted")
             
             # Wait before checking again
-            time.sleep(0.5)
+            time.sleep(1.0)
     
     def _fetch_results(self, query_id: str) -> tuple[List[str], List[List[Any]]]:
         """
