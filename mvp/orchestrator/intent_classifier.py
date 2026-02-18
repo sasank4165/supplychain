@@ -68,9 +68,7 @@ class IntentClassifier:
             # Call Bedrock for classification
             response = self.bedrock_client.generate_text(
                 prompt=user_prompt,
-                system_prompt=system_prompt,
-                max_tokens=100,
-                temperature=0.0
+                system_prompt=system_prompt
             )
             
             # Parse intent from response

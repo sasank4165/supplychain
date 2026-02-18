@@ -200,26 +200,8 @@ class QueryOrchestrator:
         Returns:
             AgentResponse from agent(s)
         """
-        # Convert ConversationContext to dict for agent router
-        context_dict = None
-        if context:
-            # Convert Interaction objects to dicts for compatibility
-            history_dicts = []
-            for interaction in context.history:
-                history_dicts.append({
-                    "query": interaction.query,
-                    "response": interaction.response,
-                    "timestamp": interaction.timestamp
-                })
-            
-            context_dict = {
-                "session_id": context.session_id,
-                "persona": context.persona.value if hasattr(context.persona, 'value') else str(context.persona),
-                "history": history_dicts,
-                "referenced_entities": context.referenced_entities
-            }
-        
-        return self.agent_router.route(query, intent, persona, context_dict)
+        # Pass ConversationContext directly to agent router
+        return self.agent_router.route(query, intent, persona, context)
     
     def _get_or_create_context(self, session_id: str, persona: str) -> ConversationContext:
         """
