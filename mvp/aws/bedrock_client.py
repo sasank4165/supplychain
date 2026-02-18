@@ -99,8 +99,12 @@ class BedrockClient:
             # Add tools if provided
             if tools:
                 tool_config = {'tools': tools}
+                # Always include toolChoice when tools are provided
+                # Default to 'auto' if not specified
                 if tool_choice:
                     tool_config['toolChoice'] = tool_choice
+                else:
+                    tool_config['toolChoice'] = {'auto': {}}
                 request_params['toolConfig'] = tool_config
             
             # Make API call
