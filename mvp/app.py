@@ -308,11 +308,15 @@ def main():
             logout(session_manager)
             st.rerun()
         
-        # Display cost summary in sidebar
-        display_cost_summary_sidebar(cost_tracker, session_id)
+        # Display cost summary in sidebar (only if enabled)
+        config = st.session_state.config
+        ui_config = config.get('ui', {})
+        if cost_tracker is not None and ui_config.get('show_cost_dashboard', True):
+            display_cost_summary_sidebar(cost_tracker, session_id)
         
         # Display conversation history in sidebar
-        display_conversation_sidebar(orchestrator, session_id, show_cache_stats=True)
+        show_cache_stats = ui_config.get('show_cache_stats', True)
+        display_conversation_sidebar(orchestrator, session_id, show_cache_stats=show_cache_stats)
         
         # Show conversation tips
         show_conversation_tips()
@@ -381,7 +385,9 @@ def main():
     
     with col2:
         # Display cost dashboard if enabled
-        if cost_tracker is not None:
+        config = st.session_state.config
+        ui_config = config.get('ui', {})
+        if cost_tracker is not None and ui_config.get('show_cost_dashboard', True):
             display_cost_dashboard(cost_tracker, session_id, show_session_costs=True)
     
     # Footer
