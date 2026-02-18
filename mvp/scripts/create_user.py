@@ -235,8 +235,22 @@ def delete_user(auth_manager: AuthManager):
 
 def main():
     """Main menu"""
-    # Initialize auth manager
-    auth_manager = AuthManager("mvp/auth/users.json")
+    # Initialize auth manager with config-based path
+    # Try to load from config, fallback to default
+    try:
+        from utils.config_manager import ConfigManager
+        config_path = os.path.join(os.path.dirname(__file__), '..', 'config.yaml')
+        if not os.path.exists(config_path):
+            config_path = os.path.join(os.path.dirname(__file__), '..', 'config.example.yaml')
+        config_manager = ConfigManager(config_path)
+        users_file = config_manager.get('auth.users_file', 'auth/users.json')
+        # Make path absolute from mvp directory
+        users_file = os.path.join(os.path.dirname(__file__), '..', users_file)
+    except Exception:
+        # Fallback to default path
+        users_file = os.path.join(os.path.dirname(__file__), '..', 'auth', 'users.json')
+    
+    auth_manager = AuthManager(users_file)
     
     while True:
         print_header("User Management Utility")
