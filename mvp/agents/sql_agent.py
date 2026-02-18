@@ -353,9 +353,28 @@ IMPORTANT RULES:
                 self.log_error(f"SQL validation failed: Contains destructive keyword '{keyword}'")
                 return False
         
-        # Check that it's a SELECT query
-        if not sql_upper.strip().startswith('SELECT'):
-            self.log_error("SQL validation failed: Not a SELECT query")
+        # Check that it's a SELECT query (handle WITH clauses and comments)
+        sql_stripped = sql_upper.strip()
+        # Remove leading comments
+        while sql_stripped.startswith('--') or sql_stripped.startswith('/*'):
+            if sql_stripped.startswith('--'):
+                # Remove single-line comment
+                newline_pos = sql_stripped.find('\n')
+                if newline_pos > 0:
+                    sql_stripped = sql_stripped[newline_pos+1:].strip()
+                else:
+                    break
+            elif sql_stripped.startswith('/*'):
+                # Remove multi-line comment
+                end_pos = sql_stripped.find('*/')
+                if end_pos > 0:
+                    sql_stripped = sql_stripped[end_pos+2:].strip()
+                else:
+                    break
+        
+        # Allow WITH clauses (CTEs) and SELECT statements
+        if not (sql_stripped.startswith('SELECT') or sql_stripped.startswith('WITH')):
+            self.log_error(f"SQL validation failed: Not a SELECT query. Query starts with: {sql_stripped[:50]}")
             return False
         
         # Check for allowed tables

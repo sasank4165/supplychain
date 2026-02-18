@@ -113,6 +113,11 @@ class QueryOrchestrator:
                 
                 if cached_result is not None:
                     self._log_info(f"Cache hit for query: {query[:50]}...")
+                    
+                    # IMPORTANT: Still update context even for cached queries
+                    context = self._get_or_create_context(session_id, persona)
+                    self._update_context(session_id, query, cached_result.agent_response.content)
+                    
                     # Return cached response
                     cached_response = cached_result
                     cached_response.cached = True
