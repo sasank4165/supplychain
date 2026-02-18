@@ -221,11 +221,9 @@ class AgentRouter:
         # Build enhanced query with SQL results context
         enhanced_query = self._build_enhanced_query(query, sql_response)
         
-        # Update context with SQL results
-        enhanced_context = context.copy() if context else {}
-        enhanced_context["sql_results"] = sql_response.data
-        
-        specialized_response = specialized_agent.process_request(enhanced_query, enhanced_context)
+        # Pass the context as-is to specialized agent
+        # The specialized agent will handle the ConversationContext object
+        specialized_response = specialized_agent.process_request(enhanced_query, context)
         
         if not specialized_response.success:
             self._log_error("Specialized agent failed in hybrid processing")
