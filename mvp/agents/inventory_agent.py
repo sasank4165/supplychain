@@ -404,10 +404,11 @@ Always be concise and focus on actionable insights."""
             "content": tool_result_content
         })
         
-        # Get final response from Bedrock
+        # Get final response from Bedrock with tool definitions
         final_response = self.bedrock_client.converse(
             messages=messages,
-            system=[{"text": system_prompt}]
+            system=[{"text": system_prompt}],
+            tools=self.TOOL_DEFINITIONS
         )
         
         return final_response
