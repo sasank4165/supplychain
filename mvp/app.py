@@ -126,13 +126,19 @@ def initialize_app():
                     default_ttl=cache_config.get('default_ttl', 300)
                 )
             
-            # Initialize cost tracking
+            # Initialize cost tracking (optional)
             cost_config = config.get('cost', {})
-            cost_tracker = CostTracker(cost_config)
-            cost_logger = CostLogger(
-                log_file_path=cost_config.get('log_file', 'logs/cost_tracking.log'),
-                enabled=cost_config.get('enabled', True)
-            )
+            cost_enabled = cost_config.get('enabled', False)
+            
+            if cost_enabled:
+                cost_tracker = CostTracker(cost_config)
+                cost_logger = CostLogger(
+                    log_file_path=cost_config.get('log_file', 'logs/cost_tracking.log'),
+                    enabled=True
+                )
+            else:
+                cost_tracker = None
+                cost_logger = None
             
             # Initialize semantic layers for each persona
             from semantic_layer.semantic_layer import SemanticLayer
@@ -339,8 +345,8 @@ def main():
             st.markdown("---")
             display_query_response(response)
             
-            # Log cost if query was successful
-            if response.agent_response.success:
+            # Log cost if query was successful and cost tracking is enabled
+            if response.agent_response.success and cost_tracker is not None:
                 # Calculate cost (this would normally come from the response metadata)
                 # For now, we'll create a placeholder cost object
                 from cost.cost_tracker import Cost, TokenUsage
@@ -374,8 +380,9 @@ def main():
                 )
     
     with col2:
-        # Display cost dashboard
-        display_cost_dashboard(cost_tracker, session_id, show_session_costs=True)
+        # Display cost dashboard if enabled
+        if cost_tracker is not None:
+            display_cost_dashboard(cost_tracker, session_id, show_session_costs=True)
     
     # Footer
     st.markdown("---")
