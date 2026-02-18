@@ -87,17 +87,49 @@ def render_main_interface(
     # Query input section
     st.subheader("Ask a Question")
     
-    # Check for prefilled query (from rerun or example)
-    prefill_value = ""
+    # Check for auto-submit query (from rerun or example)
+    auto_submit_query = None
     if 'prefill_query' in st.session_state:
-        prefill_value = st.session_state.prefill_query
+        auto_submit_query = st.session_state.prefill_query
         del st.session_state.prefill_query
+    
+    # If we have an auto-submit query, process it immediately
+    if auto_submit_query:
+        st.info(f"Running query: {auto_submit_query}")
+        
+        # Set loading state
+        st.session_state.is_loading = True
+        
+        # Process query
+        with st.spinner("Processing your query..."):
+            try:
+                response = orchestrator.process_query(
+                    query=auto_submit_query.strip(),
+                    persona=selected_persona,
+                    session_id=session_id
+                )
+                
+                # Add to query history
+                st.session_state.query_history.append({
+                    'query': auto_submit_query.strip(),
+                    'persona': selected_persona,
+                    'response': response
+                })
+                
+                # Clear loading state
+                st.session_state.is_loading = False
+                
+                return response
+                
+            except Exception as e:
+                st.session_state.is_loading = False
+                st.error(f"Error processing query: {str(e)}")
+                return None
     
     # Query input form
     with st.form("query_form", clear_on_submit=True):
         query_input = st.text_area(
             "Enter your query",
-            value=prefill_value,
             placeholder="e.g., Show me products with low stock levels\ne.g., Calculate reorder points for warehouse WH001\ne.g., Which suppliers have the best performance?",
             height=100,
             max_chars=1000,
