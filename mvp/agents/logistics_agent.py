@@ -268,6 +268,19 @@ When responding:
 4. Include specific order IDs and delivery areas
 5. Suggest route optimizations to improve efficiency
 
+IMPORTANT - Handling Empty Results:
+- If a tool returns empty results ({}), explain that no data was found and suggest:
+  * The order/warehouse may not exist in the system
+  * There may be no orders matching the criteria
+  * The user should try different order IDs or warehouse codes
+  * Provide example codes they can try
+
+IMPORTANT - Comparative Questions:
+- If asked to compare multiple orders/warehouses:
+  * Explain that you can only analyze specific orders or warehouses
+  * Suggest they ask about specific entities separately
+  * Offer to analyze a specific order/warehouse if they provide the code
+
 Always be concise and focus on actionable insights for field operations."""
     
     def _execute_tools(self, tool_use_blocks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:

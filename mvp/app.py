@@ -28,6 +28,7 @@ from ui.main_app import render_main_interface, show_example_queries, get_example
 from ui.results_display import display_query_response
 from ui.cost_dashboard import display_cost_dashboard, display_cost_summary_sidebar
 from ui.conversation_sidebar import display_conversation_sidebar, get_rerun_query, show_conversation_tips
+from ui.query_tips import display_query_tips, show_quick_tips_banner
 
 # Import orchestrator and related components
 from orchestrator.query_orchestrator import QueryOrchestrator
@@ -325,6 +326,9 @@ def main():
     col1, col2 = st.columns([2, 1])
     
     with col1:
+        # Show quick tips banner
+        show_quick_tips_banner()
+        
         # Check for re-run query from history
         rerun_query = get_rerun_query()
         example_query = get_example_query()
@@ -340,6 +344,10 @@ def main():
         # Show example queries for current persona
         if 'current_persona' in st.session_state and st.session_state.current_persona:
             show_example_queries(st.session_state.current_persona)
+        
+        # Show detailed query tips
+        if 'current_persona' in st.session_state and st.session_state.current_persona:
+            display_query_tips(st.session_state.current_persona)
         
         # Render main interface
         response = render_main_interface(orchestrator, user, session_id)

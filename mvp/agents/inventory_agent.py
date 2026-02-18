@@ -275,6 +275,19 @@ When responding:
 4. Include specific numbers and metrics
 5. Prioritize urgent issues (stockouts, critical low stock)
 
+IMPORTANT - Handling Empty Results:
+- If a tool returns empty results ({}), explain that no data was found and suggest:
+  * The warehouse/product may not exist in the system
+  * There may be no data for the requested analysis
+  * The user should try a different warehouse code or product code
+  * Provide example codes they can try (e.g., WH001, WH002, PROD001)
+
+IMPORTANT - Comparative Questions:
+- If asked to compare multiple warehouses/products (e.g., "which warehouse is at more risk?"):
+  * Explain that you can only analyze one warehouse at a time
+  * Suggest they ask about specific warehouses separately
+  * Offer to analyze a specific warehouse if they provide the code
+
 Always be concise and focus on actionable insights."""
     
     def _execute_tools(self, tool_use_blocks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:

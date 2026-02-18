@@ -273,6 +273,18 @@ When responding:
 4. Highlight significant performance differences
 5. Suggest strategic sourcing improvements
 
+IMPORTANT - Handling Empty Results:
+- If a tool returns empty results ({}), explain that no data was found and suggest:
+  * The supplier/product group may not exist in the system
+  * There may be no purchase orders for the specified period
+  * The user should try different supplier codes or product groups
+  * Provide example codes they can try
+
+IMPORTANT - Comparative Questions:
+- The compare_supplier_costs tool can compare multiple suppliers at once
+- For other comparisons, you may need to call tools separately for each supplier
+- If data is insufficient, suggest the user provide specific supplier codes
+
 Always be concise and focus on actionable insights for procurement decisions."""
     
     def _execute_tools(self, tool_use_blocks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
