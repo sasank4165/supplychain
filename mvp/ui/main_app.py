@@ -87,10 +87,17 @@ def render_main_interface(
     # Query input section
     st.subheader("Ask a Question")
     
+    # Check for prefilled query (from rerun or example)
+    prefill_value = ""
+    if 'prefill_query' in st.session_state:
+        prefill_value = st.session_state.prefill_query
+        del st.session_state.prefill_query
+    
     # Query input form
     with st.form("query_form", clear_on_submit=True):
         query_input = st.text_area(
             "Enter your query",
+            value=prefill_value,
             placeholder="e.g., Show me products with low stock levels\ne.g., Calculate reorder points for warehouse WH001\ne.g., Which suppliers have the best performance?",
             height=100,
             max_chars=1000,
