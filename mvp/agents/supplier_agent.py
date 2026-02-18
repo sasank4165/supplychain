@@ -233,15 +233,15 @@ class SupplierAgent(BaseAgent):
         messages = []
         
         # Add conversation history if available
-        if context and "history" in context:
-            for interaction in context["history"]:
+        if context and hasattr(context, 'history'):
+            for interaction in context.history:
                 messages.append({
                     "role": "user",
-                    "content": [{"text": interaction.get("query", "")}]
+                    "content": [{"text": interaction.query}]
                 })
                 messages.append({
                     "role": "assistant",
-                    "content": [{"text": interaction.get("response", "")}]
+                    "content": [{"text": interaction.response}]
                 })
         
         # Add current request

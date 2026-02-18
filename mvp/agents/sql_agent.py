@@ -281,8 +281,8 @@ IMPORTANT RULES:
         if context and context.history:
             prompt += "Previous conversation:\n"
             for interaction in context.history[-3:]:  # Last 3 interactions
-                prompt += f"Q: {interaction.get('query', '')}\n"
-                prompt += f"A: {interaction.get('response', '')}\n"
+                prompt += f"Q: {interaction.query}\n"
+                prompt += f"A: {interaction.response}\n"
             prompt += "\n"
         
         # Add business terms if found
