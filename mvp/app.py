@@ -134,14 +134,101 @@ def initialize_app():
                 enabled=cost_config.get('enabled', True)
             )
             
+            # Initialize semantic layers for each persona
+            from semantic_layer.semantic_layer import SemanticLayer
+            from semantic_layer.schema_provider import SchemaProvider
+            from semantic_layer.business_metrics import Persona
+            from agents.warehouse_sql_agent import WarehouseSQLAgent
+            from agents.field_sql_agent import FieldEngineerSQLAgent
+            from agents.procurement_sql_agent import ProcurementSQLAgent
+            from agents.inventory_agent import InventoryAgent
+            from agents.logistics_agent import LogisticsAgent
+            from agents.supplier_agent import SupplierAgent
+            
+            # Create schema provider
+            schema_provider = SchemaProvider(glue_client)
+            
+            # Create semantic layers for each persona
+            warehouse_semantic_layer = SemanticLayer(
+                schema_provider=schema_provider,
+                persona=Persona.WAREHOUSE_MANAGER
+            )
+            
+            field_semantic_layer = SemanticLayer(
+                schema_provider=schema_provider,
+                persona=Persona.FIELD_ENGINEER
+            )
+            
+            procurement_semantic_layer = SemanticLayer(
+                schema_provider=schema_provider,
+                persona=Persona.PROCUREMENT_SPECIALIST
+            )
+            
+            # Initialize SQL agents for each persona
+            warehouse_sql_agent = WarehouseSQLAgent(
+                bedrock_client=bedrock_client,
+                redshift_client=redshift_client,
+                semantic_layer=warehouse_semantic_layer,
+                logger=logger
+            )
+            
+            field_sql_agent = FieldEngineerSQLAgent(
+                bedrock_client=bedrock_client,
+                redshift_client=redshift_client,
+                semantic_layer=field_semantic_layer,
+                logger=logger
+            )
+            
+            procurement_sql_agent = ProcurementSQLAgent(
+                bedrock_client=bedrock_client,
+                redshift_client=redshift_client,
+                semantic_layer=procurement_semantic_layer,
+                logger=logger
+            )
+            
+            # Initialize specialized agents
+            lambda_config = aws_config.get('lambda', {})
+            
+            inventory_agent = InventoryAgent(
+                bedrock_client=bedrock_client,
+                lambda_client=lambda_client,
+                lambda_function_name=lambda_config.get('inventory_function', 'inventory-optimizer'),
+                logger=logger
+            )
+            
+            logistics_agent = LogisticsAgent(
+                bedrock_client=bedrock_client,
+                lambda_client=lambda_client,
+                lambda_function_name=lambda_config.get('logistics_function', 'logistics-optimizer'),
+                logger=logger
+            )
+            
+            supplier_agent = SupplierAgent(
+                bedrock_client=bedrock_client,
+                lambda_client=lambda_client,
+                lambda_function_name=lambda_config.get('supplier_function', 'supplier-analyzer'),
+                logger=logger
+            )
+            
+            # Create agent mappings
+            sql_agents = {
+                "Warehouse Manager": warehouse_sql_agent,
+                "Field Engineer": field_sql_agent,
+                "Procurement Specialist": procurement_sql_agent
+            }
+            
+            specialized_agents = {
+                "Warehouse Manager": inventory_agent,
+                "Field Engineer": logistics_agent,
+                "Procurement Specialist": supplier_agent
+            }
+            
             # Initialize orchestrator components
             intent_classifier = IntentClassifier(bedrock_client, logger)
             
-            # For MVP, we'll create a simplified agent router without pre-initialized agents
-            # Agents will be created on-demand when needed
             agent_router = AgentRouter(
-                sql_agents={},  # Will be populated on-demand
-                specialized_agents={},  # Will be populated on-demand
+                sql_agents=sql_agents,
+                specialized_agents=specialized_agents,
                 logger=logger
             )
             
