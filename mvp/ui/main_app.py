@@ -88,22 +88,17 @@ def render_main_interface(
     st.subheader("Ask a Question")
     
     # Check for auto-submit query (from rerun or example)
-    auto_submit_query = None
+    response_to_return = None
     if 'prefill_query' in st.session_state:
         auto_submit_query = st.session_state.prefill_query
         del st.session_state.prefill_query
-    
-    # If we have an auto-submit query, process it immediately
-    if auto_submit_query:
-        st.info(f"Running query: {auto_submit_query}")
         
-        # Set loading state
-        st.session_state.is_loading = True
+        st.info(f"Running query: {auto_submit_query}")
         
         # Process query
         with st.spinner("Processing your query..."):
             try:
-                response = orchestrator.process_query(
+                response_to_return = orchestrator.process_query(
                     query=auto_submit_query.strip(),
                     persona=selected_persona,
                     session_id=session_id
@@ -113,20 +108,13 @@ def render_main_interface(
                 st.session_state.query_history.append({
                     'query': auto_submit_query.strip(),
                     'persona': selected_persona,
-                    'response': response
+                    'response': response_to_return
                 })
                 
-                # Clear loading state
-                st.session_state.is_loading = False
-                
-                return response
-                
             except Exception as e:
-                st.session_state.is_loading = False
                 st.error(f"Error processing query: {str(e)}")
-                return None
     
-    # Query input form
+    # Query input form (always render)
     with st.form("query_form", clear_on_submit=True):
         query_input = st.text_area(
             "Enter your query",
@@ -166,9 +154,6 @@ def render_main_interface(
                 st.error("Please enter a query")
                 return None
             
-            # Set loading state
-            st.session_state.is_loading = True
-            
             # Process query
             with st.spinner("Processing your query..."):
                 try:
@@ -185,17 +170,14 @@ def render_main_interface(
                         'response': response
                     })
                     
-                    # Clear loading state
-                    st.session_state.is_loading = False
-                    
                     return response
                     
                 except Exception as e:
-                    st.session_state.is_loading = False
                     st.error(f"Error processing query: {str(e)}")
                     return None
     
-    return None
+    # Return the auto-submitted response if we have one
+    return response_to_return
 
 
 def show_loading_indicator():
