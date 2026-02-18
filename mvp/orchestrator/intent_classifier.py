@@ -44,13 +44,14 @@ class IntentClassifier:
         self.bedrock_client = bedrock_client
         self.logger = logger
     
-    def classify(self, query: str, persona: str) -> Intent:
+    def classify(self, query: str, persona: str, context=None) -> Intent:
         """
         Classify a user query into an intent type.
         
         Args:
             query: User's natural language query
             persona: User's persona (Warehouse Manager, Field Engineer, Procurement Specialist)
+            context: Optional conversation context for follow-up questions
             
         Returns:
             Intent enum value
@@ -63,7 +64,7 @@ class IntentClassifier:
             
             # Build classification prompt
             system_prompt = self._build_system_prompt()
-            user_prompt = self._build_user_prompt(query, persona)
+            user_prompt = self._build_user_prompt(query, persona, context)
             
             # Call Bedrock for classification
             response = self.bedrock_client.generate_text(
@@ -120,22 +121,33 @@ IMPORTANT:
 - Do not include any explanation or additional text
 - If unsure, default to SQL_QUERY"""
     
-    def _build_user_prompt(self, query: str, persona: str) -> str:
+    def _build_user_prompt(self, query: str, persona: str, context=None) -> str:
         """
         Build user prompt for intent classification.
         
         Args:
             query: User's query
             persona: User's persona
+            context: Optional conversation context
             
         Returns:
             User prompt string
         """
-        return f"""Persona: {persona}
-Query: {query}
-
-Classify this query as SQL_QUERY, OPTIMIZATION, or HYBRID.
-Respond with only the intent type:"""
+        prompt = f"Persona: {persona}\n"
+        
+        # Add conversation context if available
+        if context and hasattr(context, 'history') and context.history:
+            prompt += "\nPrevious conversation:\n"
+            for interaction in context.history[-2:]:  # Last 2 interactions
+                prompt += f"Q: {interaction.query}\n"
+                prompt += f"A: {interaction.response[:100]}...\n"
+            prompt += "\n"
+        
+        prompt += f"Query: {query}\n\n"
+        prompt += "Classify this query as SQL_QUERY, OPTIMIZATION, or HYBRID.\n"
+        prompt += "Respond with only the intent type:"
+        
+        return prompt
     
     def _parse_intent(self, response: str) -> Intent:
         """

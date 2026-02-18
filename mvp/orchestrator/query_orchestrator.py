@@ -121,12 +121,12 @@ class QueryOrchestrator:
                 
                 self._log_info("Cache miss, processing query")
             
-            # Step 1: Classify intent
-            self._log_info("Step 1: Classifying intent")
-            intent = self.classify_intent(query, persona)
-            
-            # Step 2: Get conversation context
+            # Step 1: Get conversation context first
             context = self._get_or_create_context(session_id, persona)
+            
+            # Step 2: Classify intent (with context for follow-up questions)
+            self._log_info("Step 1: Classifying intent")
+            intent = self.classify_intent(query, persona, context)
             
             # Step 3: Route to appropriate agent(s)
             self._log_info(f"Step 2: Routing to agents (intent: {intent.value})")
@@ -168,18 +168,19 @@ class QueryOrchestrator:
                 execution_time=time.time() - start_time
             )
     
-    def classify_intent(self, query: str, persona: str) -> Intent:
+    def classify_intent(self, query: str, persona: str, context=None) -> Intent:
         """
         Classify query intent.
         
         Args:
             query: User's query
             persona: User's persona
+            context: Optional conversation context
             
         Returns:
             Intent enum value
         """
-        return self.intent_classifier.classify(query, persona)
+        return self.intent_classifier.classify(query, persona, context)
     
     def route_to_agents(
         self,
