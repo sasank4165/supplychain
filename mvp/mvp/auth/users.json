@@ -1,31 +1,3 @@
 {
-  "users": [
-    {
-      "username": "Procurement Manager",
-      "password_hash": "$2b$12$tLckgoyuMIuJZ1SVTItkRekXep/Cp76YiY4cvKnYyRm5WVRsSc2N.",
-      "personas": [
-        "Procurement Specialist"
-      ],
-      "active": true,
-      "created_date": "2026-02-17T23:28:29.404415"
-    },
-    {
-      "username": "Warehouse Manager",
-      "password_hash": "$2b$12$BQ7L2iZ1DdY3ZKQPMpGn6OaS9seh6dr7C0WGNvmGtpN7WgPaWxdH.",
-      "personas": [
-        "Warehouse Manager"
-      ],
-      "active": true,
-      "created_date": "2026-02-17T23:29:21.544111"
-    },
-    {
-      "username": "Field Operations Manager",
-      "password_hash": "$2b$12$1h5oZ8aO2V/4WNqDdz6H5.6xTWQqztz5nf.oIKbqLkAT4mGy.sD92",
-      "personas": [
-        "Field Engineer"
-      ],
-      "active": true,
-      "created_date": "2026-02-17T23:30:29.005233"
-    }
-  ]
+  "users": []
 }
