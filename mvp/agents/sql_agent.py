@@ -243,8 +243,9 @@ IMPORTANT RULES:
 4. Use appropriate WHERE clauses to filter data
 5. Return the SQL query wrapped in ```sql code blocks
 6. Do NOT include any explanations, only the SQL query
-7. Do NOT use DELETE, UPDATE, DROP, or other destructive operations
+7. DO NOT use DELETE, UPDATE, DROP, or other destructive operations
 8. Use LIMIT clauses for queries that might return many rows
+9. CRITICAL: If the user asks a follow-up question (e.g., "what about X?" or "show me more"), refer to the previous conversation to understand the context and maintain continuity
 
 """
         
@@ -282,7 +283,9 @@ IMPORTANT RULES:
             prompt += "Previous conversation:\n"
             for interaction in context.history[-3:]:  # Last 3 interactions
                 prompt += f"Q: {interaction.query}\n"
-                prompt += f"A: {interaction.response}\n"
+                # Truncate response to avoid overwhelming context
+                response_preview = interaction.response[:200] + "..." if len(interaction.response) > 200 else interaction.response
+                prompt += f"A: {response_preview}\n"
             prompt += "\n"
         
         # Add business terms if found

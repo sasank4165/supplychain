@@ -239,9 +239,11 @@ class SupplierAgent(BaseAgent):
                     "role": "user",
                     "content": [{"text": interaction.query}]
                 })
+                # Truncate response to avoid overwhelming context
+                response_preview = interaction.response[:300] + "..." if len(interaction.response) > 300 else interaction.response
                 messages.append({
                     "role": "assistant",
-                    "content": [{"text": interaction.response}]
+                    "content": [{"text": response_preview}]
                 })
         
         # Add current request
